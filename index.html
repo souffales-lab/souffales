@@ -36,26 +36,7 @@
 
         /* --- LANDING PAGE STYLES --- */
         .profile-area { text-align: center; margin-bottom: 40px; }
-
-        /* --- BAGIAN YANG DIUBAH: MENJADI FOTO LINGKARAN --- */
-        .avatar { 
-            width: 100px; 
-            height: 100px; 
-            border-radius: 50%; 
-            background: var(--bg-card); 
-            border: 4px solid var(--white); 
-            margin: 0 auto 15px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; /* Memastikan foto tetap berbentuk lingkaran */
-        }
-        
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Agar foto memenuhi lingkaran tanpa distorsi */
-        }
+        .avatar { width: 100px; height: 100px; border-radius: 50%; background: var(--bg-card); border: 4px solid var(--white); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
         
         .nav-button {
             display: block;
@@ -115,4 +96,313 @@
         /* --- FLOATING BAR --- */
         .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 15px rgba(0,0,0,0.05); z-index: 50; box-sizing: border-box; }
         .bottom-container { max-width: 600px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
-        .btn-checkout { background: var(--primary-hover); color: white; border: none; padding: 12px 24px; border-radius: 10px; font-weight: bold; cursor: pointer;
+        .btn-checkout { background: var(--primary-hover); color: white; border: none; padding: 12px 24px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-checkout:disabled { background: #d3c3b4; cursor: not-allowed; }
+        .btn-checkout:not(:disabled):hover { background: var(--text-dark); }
+
+        /* --- MODAL STRUK --- */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 20px; box-sizing: border-box; }
+        .modal-content { background: var(--bg-body); border-radius: 20px; width: 100%; max-width: 450px; padding: 20px; position: relative; max-height: 90vh; overflow-y: auto; box-sizing: border-box; }
+        .receipt-container { padding: 10px; background: var(--bg-body); }
+        .r-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95em; align-items: center; }
+        .r-row span:first-child { color: var(--text-light); }
+        .r-row span:last-child { font-weight: bold; color: var(--text-dark); }
+        .r-total-box { background: var(--primary-hover); color: white; padding: 15px; border-radius: 12px; text-align: center; font-weight: bold; margin-top: 20px; font-size: 1.1em; display: flex; justify-content: space-between; }
+        
+        @media (max-width: 500px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="pageLanding" class="page active">
+        <div class="profile-area">
+            <div class="avatar">✿</div>
+            <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Souffales ✨</h2>
+            <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0;">Stickers, Merch & Illustration</p>
+        </div>
+
+        <a href="https://shopee.co.id/souffales" target="_blank" class="nav-button">🛒 Shopee Store</a>
+        
+        <a href="#" target="_blank" class="nav-button">📖 Brand Profile</a>
+
+        <div onclick="showPage('pagePreOrder')" class="nav-button">📦 Pre-Order Merch</div>
+        <div onclick="showPage('pageCommission')" class="nav-button">🎨 Order Commission</div>
+    </div>
+
+    <div id="pagePreOrder" class="page">
+        <div class="coming-soon">
+            <h1 style="font-size: 3em; margin: 0;">✿</h1>
+            <h2 style="color: var(--primary-hover); margin-top: 10px;">Pre-Order Coming Soon</h2>
+            <p style="color: var(--text-light);">Belum ada produk Pre-Order yang aktif saat ini. Ditunggu ya!</p>
+            <span class="back-link" onclick="showPage('pageLanding')">← Kembali ke Utama</span>
+        </div>
+    </div>
+
+    <div id="pageCommission" class="page">
+        <span class="back-link" onclick="showPage('pageLanding')" style="margin-bottom: 25px;">← Kembali</span>
+        
+        <div class="header" style="margin-bottom: 25px;">
+            <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Commission Form</h2>
+            <p style="font-size: 0.9em; color: var(--text-light); margin-top: 0;">Silakan isi info dan pilih kategori komisi!</p>
+        </div>
+
+        <div class="card">
+            <div class="info-grid">
+                <div class="form-group">
+                    <label>NAME ORDER</label>
+                    <input type="text" id="userName" placeholder="Nama / Username kamu">
+                </div>
+                <div class="form-group">
+                    <label>CONTACT / PHONE NUMBER</label>
+                    <input type="text" id="userContact" placeholder="@twitter / Discord / WA">
+                </div>
+            </div>
+        </div>
+
+        <div class="category-title">Ych</div>
+        <div class="product-grid">
+            
+            <div class="product-item" id="item-kotsouna" data-price-idr="95000" data-price-usd="20" data-name="YCH - Kotsouna">
+                <div class="product-preview-img">
+                    <img src="Kotsouna.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Gambar Kotsouna</div>
+                </div>
+                <div>
+                    <div class="product-name">Kotsouna</div>
+                    <div class="product-price">95k / $20</div>
+                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-kotsouna', -1)">-</button>
+                    <span class="counter-value" id="qty-item-kotsouna">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-kotsouna', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="product-item" id="item-yochien" data-price-idr="70000" data-price-usd="17" data-name="YCH - Yochien">
+                <div class="product-preview-img">
+                    <img src="Yochien.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Gambar Yochien</div>
+                </div>
+                <div>
+                    <div class="product-name">Yochien</div>
+                    <div class="product-price">70k / $17</div>
+                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-yochien', -1)">-</button>
+                    <span class="counter-value" id="qty-item-yochien">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-yochien', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="product-item" id="item-cimit" data-price-idr="95000" data-price-usd="20" data-name="YCH - Cimit">
+                <div class="product-preview-img">
+                    <img src="Cimit.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Gambar Cimit</div>
+                </div>
+                <div>
+                    <div class="product-name">Cimit</div>
+                    <div class="product-price">95k / $20</div>
+                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-cimit', -1)">-</button>
+                    <span class="counter-value" id="qty-item-cimit">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-cimit', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="product-item" id="item-ebifurai" data-price-idr="65000" data-price-usd="15" data-name="YCH - Ebi Furai">
+                <div class="product-preview-img">
+                    <img src="EbiFurai.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Gambar Ebi Furai</div>
+                </div>
+                <div>
+                    <div class="product-name">Ebi Furai</div>
+                    <div class="product-price">65k / $15</div>
+                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-ebifurai', -1)">-</button>
+                    <span class="counter-value" id="qty-item-ebifurai">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-ebifurai', 1)">+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="category-title">Logo Commission</div>
+        <div class="product-grid" style="grid-template-columns: 1fr;">
+            
+            <div class="product-item" id="item-logo" data-price-idr="250000" data-price-usd="30" data-name="Logo Commission">
+                <div class="product-preview-img" style="aspect-ratio: 2.5 / 1;">
+                    <img src="LogoCommission.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Banner Sampel Logo Commission</div>
+                </div>
+                <div>
+                    <div class="product-name">Logo Commission</div>
+                    <div class="product-price">Start From 250k / $30</div>
+                    <div class="product-desc">Estimated 1 week to 3 Weeks (depends on its difficulty and queue)</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-logo', -1)">-</button>
+                    <span class="counter-value" id="qty-item-logo">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-logo', 1)">+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="height: 100px;"></div>
+    </div>
+
+</div>
+
+<div id="commissionBar" class="bottom-bar" style="display: none;">
+    <div class="bottom-container">
+        <div>
+            <div style="font-size: 0.75em; color: var(--text-light); font-weight: bold;">TOTAL ESTIMASI</div>
+            <div id="totalDisplay" style="font-weight: bold; color: var(--primary-hover); font-size: 1.1em;">Rp 0 / $0</div>
+        </div>
+        <button class="btn-checkout" id="btnCheckout" disabled onclick="showReceipt()">Check Struk</button>
+    </div>
+</div>
+
+<div id="receiptModal" class="modal">
+    <div class="modal-content">
+        <div id="captureArea" class="receipt-container">
+            <h2 style="text-align: center; color: var(--primary-hover); margin: 0;">✿ Souffales Struk ✿</h2>
+            <p style="text-align: center; font-size: 0.8em; margin: 5px 0 20px; color: var(--text-light);">Order Confirmation Receipt</p>
+            <hr style="border: none; border-top: 3px dashed var(--primary); margin-bottom: 15px;">
+            
+            <div class="r-row"><span>Nama:</span> <span id="rName"></span></div>
+            <div class="r-row"><span>Kontak:</span> <span id="rContact"></span></div>
+            <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
+            
+            <div style="font-size: 0.85em; font-weight: bold; color: var(--primary-hover); margin-bottom: 10px;">DAFTAR PESANAN:</div>
+            <div id="rItems"></div>
+            
+            <div class="r-total-box">
+                <span>TOTAL:</span>
+                <span id="rTotal">Rp 0 / $0</span>
+            </div>
+            <p style="font-size: 0.75em; text-align: center; margin-top: 20px; color: var(--text-light); font-weight: 600;">Silakan simpan gambar ini & kirim ke DM untuk submit order ya! ✨</p>
+        </div>
+        <button class="btn-checkout" onclick="downloadReceipt()" style="width: 100%; margin-top: 15px;">📸 Simpan Jadi Gambar</button>
+        <button onclick="closeModal()" style="width: 100%; background: none; border: none; margin-top: 12px; color: var(--text-light); font-weight: bold; cursor: pointer;">Tutup</button>
+    </div>
+</div>
+
+<script>
+    let orderData = {
+        'item-kotsouna': { qty: 0, priceIdr: 95000, priceUsd: 20, name: "YCH - Kotsouna" },
+        'item-yochien':  { qty: 0, priceIdr: 70000, priceUsd: 17, name: "YCH - Yochien" },
+        'item-cimit':    { qty: 0, priceIdr: 95000, priceUsd: 20, name: "YCH - Cimit" },
+        'item-ebifurai': { qty: 0, priceIdr: 65000, priceUsd: 15, name: "YCH - Ebi Furai" },
+        'item-logo':     { qty: 0, priceIdr: 250000, priceUsd: 30, name: "Logo Commission" }
+    };
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        document.getElementById('commissionBar').style.display = (pageId === 'pageCommission') ? 'flex' : 'none';
+        window.scrollTo(0, 0);
+    }
+
+    function changeQty(itemId, amount) {
+        let item = orderData[itemId];
+        let cardElement = document.getElementById(itemId);
+        
+        item.qty += amount;
+        if (item.qty < 0) item.qty = 0;
+
+        if (item.qty > 0) {
+            cardElement.classList.add('selected');
+        } else {
+            cardElement.classList.remove('selected');
+        }
+
+        document.getElementById(`qty-${itemId}`).innerText = item.qty;
+        updateTotal();
+    }
+
+    function updateTotal() {
+        let totalIDR = 0;
+        let totalUSD = 0;
+        let hasItems = false;
+
+        for (let key in orderData) {
+            let item = orderData[key];
+            if (item.qty > 0) {
+                totalIDR += item.priceIdr * item.qty;
+                totalUSD += item.priceUsd * item.qty;
+                hasItems = true;
+            }
+        }
+        
+        document.getElementById('totalDisplay').innerText = `Rp ${totalIDR.toLocaleString('id-ID')} / $${totalUSD}`;
+        document.getElementById('btnCheckout').disabled = !hasItems;
+    }
+
+    function showReceipt() {
+        const nama = document.getElementById('userName').value.trim();
+        const kontak = document.getElementById('userContact').value.trim();
+        
+        if (!nama || !kontak) {
+            alert("Harap isi Name Order dan Contact kamu dulu ya! ✿");
+            return;
+        }
+
+        document.getElementById('rName').innerText = nama;
+        document.getElementById('rContact').innerText = kontak;
+        
+        const itemBox = document.getElementById('rItems');
+        itemBox.innerHTML = '';
+        
+        let finalIDR = 0;
+        let finalUSD = 0;
+
+        for (let key in orderData) {
+            let item = orderData[key];
+            if (item.qty > 0) {
+                let subIdr = item.priceIdr * item.qty;
+                let subUsd = item.priceUsd * item.qty;
+                finalIDR += subIdr;
+                finalUSD += subUsd;
+
+                itemBox.innerHTML += `
+                    <div class="r-row" style="margin-bottom: 8px;">
+                        <span style="color: var(--text-dark); font-weight: 500;">• ${item.name} <b style="color: var(--primary-hover)">x${item.qty}</b></span>
+                        <span>Rp ${subIdr.toLocaleString('id-ID')} / $${subUsd}</span>
+                    </div>`;
+            }
+        }
+
+        document.getElementById('rTotal').innerText = `Rp ${finalIDR.toLocaleString('id-ID')} / $${finalUSD}`;
+        document.getElementById('receiptModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('receiptModal').style.display = 'none';
+    }
+
+    function downloadReceipt() {
+        const area = document.getElementById('captureArea');
+        html2canvas(area, { backgroundColor: "#fffcf4", scale: 2 }).then(canvas => {
+            const link = document.createElement('a');
+            const clientName = document.getElementById('userName').value.replace(/[^a-zA-Z0-9]/g, "");
+            link.download = `Order_Souffales_${clientName || 'Client'}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
+
+</body>
+</html>
