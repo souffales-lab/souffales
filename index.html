@@ -36,7 +36,7 @@
 
         /* --- LANDING PAGE STYLES --- */
         .profile-area { text-align: center; margin-bottom: 40px; }
-        .avatar { width: 100px; height: 100px; border-radius: 50%; background: var(--bg-card); border: 4px solid var(--white); margin-bottom: 15px; }
+        .avatar { width: 100px; height: 100px; border-radius: 50%; background: var(--bg-card); border: 4px solid var(--white); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
         
         .nav-button {
             display: block;
@@ -62,34 +62,45 @@
 
         /* --- FORM STYLES --- */
         .card { background: var(--bg-card); border-radius: 20px; padding: 25px; margin-bottom: 25px; }
-        .category-title { font-size: 1.4em; font-weight: bold; color: var(--primary-hover); margin-top: 20px; margin-bottom: 15px; }
+        .category-title { font-size: 1.4em; font-weight: bold; color: var(--primary-hover); margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px dashed var(--primary); }
         
-        .info-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 20px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .form-group label { display: block; font-size: 0.85em; font-weight: bold; margin-bottom: 8px; color: var(--primary-hover); }
-        .form-group input { width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; box-sizing: border-box; }
+        .form-group input { width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; box-sizing: border-box; font-family: inherit; color: var(--text-dark); }
 
         .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .product-item { background: var(--white); border-radius: 15px; padding: 15px; cursor: pointer; border: 3px solid transparent; transition: 0.3s; }
+        .product-item { background: var(--white); border-radius: 15px; padding: 15px; cursor: pointer; border: 3px solid transparent; transition: 0.3s; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-item:hover { transform: translateY(-2px); box-shadow: 0 5px 10px rgba(160, 120, 85, 0.05); }
         .product-item.selected { border-color: var(--primary-hover); background: #F9F1E7; }
         .product-name { font-weight: bold; font-size: 1em; margin-bottom: 5px; }
         .product-price { color: var(--primary-hover); font-weight: bold; font-size: 0.9em; margin-bottom: 8px; }
-        .product-desc { font-size: 0.75em; color: var(--text-light); line-height: 1.3; }
+        .product-desc { font-size: 0.75em; color: var(--text-light); line-height: 1.4; }
 
         /* --- COMING SOON AREA --- */
-        .coming-soon { text-align: center; padding: 50px 20px; }
-        .back-link { display: inline-block; margin-top: 20px; color: var(--primary-hover); font-weight: bold; cursor: pointer; }
+        .coming-soon { text-align: center; padding: 60px 20px; }
+        .back-link { display: inline-block; margin-top: 10px; color: var(--primary-hover); font-weight: bold; cursor: pointer; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
 
         /* --- FLOATING BAR --- */
-        .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 15px rgba(0,0,0,0.05); z-index: 50; }
-        .btn-checkout { background: var(--primary-hover); color: white; border: none; padding: 12px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; }
-        .btn-checkout:disabled { background: #d3c3b4; }
+        .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 15px rgba(0,0,0,0.05); z-index: 50; box-sizing: border-box; }
+        .bottom-container { max-width: 600px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .btn-checkout { background: var(--primary-hover); color: white; border: none; padding: 12px 24px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-checkout:disabled { background: #d3c3b4; cursor: not-allowed; }
+        .btn-checkout:not(:disabled):hover { background: var(--text-dark); }
 
         /* --- MODAL --- */
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; backdrop-filter: blur(3px); }
-        .modal-content { background: var(--bg-body); border-radius: 20px; width: 90%; max-width: 450px; padding: 20px; position: relative; max-height: 90vh; overflow-y: auto; }
-        .receipt-container { padding: 20px; background: var(--bg-body); }
-        .r-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9em; }
-        .r-total-box { background: var(--primary-hover); color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; margin-top: 15px; }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 20px; box-sizing: border-box; }
+        .modal-content { background: var(--bg-body); border-radius: 20px; width: 100%; max-width: 450px; padding: 20px; position: relative; max-height: 90vh; overflow-y: auto; box-sizing: border-box; }
+        .receipt-container { padding: 10px; background: var(--bg-body); }
+        .r-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95em; }
+        .r-row span:first-child { color: var(--text-light); }
+        .r-row span:last-child { font-weight: bold; color: var(--text-dark); }
+        .r-total-box { background: var(--primary-hover); color: white; padding: 15px; border-radius: 12px; text-align: center; font-weight: bold; margin-top: 20px; font-size: 1.1em; display: flex; justify-content: space-between; }
+        
+        @media (max-width: 500px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -98,13 +109,217 @@
 
     <div id="pageLanding" class="page active">
         <div class="profile-area">
-            <div class="avatar" style="margin: 0 auto 15px;">
-                <img src="https://via.placeholder.com/100" style="border-radius: 50%; width: 100%;">
-            </div>
-            <h2 style="color: var(--primary-hover);">Souffales ✨</h2>
-            <p style="color: var(--text-light); font-size: 0.9em;">Stickers, Merch & Illustration</p>
+            <div class="avatar">✿</div>
+            <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Souffales ✨</h2>
+            <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0;">Stickers, Merch & Illustration</p>
         </div>
 
         <a href="https://shopee.co.id/souffales" target="_blank" class="nav-button">🛒 Shopee Store</a>
         <div onclick="showPage('pagePreOrder')" class="nav-button">📦 Pre-Order Merch</div>
-        <div onclick="showPage('pageCommission')" class="nav-button">🎨
+        <div onclick="showPage('pageCommission')" class="nav-button">🎨 Order Commission</div>
+    </div>
+
+    <div id="pagePreOrder" class="page">
+        <div class="coming-soon">
+            <h1 style="font-size: 3em; margin: 0;">✿</h1>
+            <h2 style="color: var(--primary-hover); margin-top: 10px;">Pre-Order Coming Soon</h2>
+            <p style="color: var(--text-light);">Belum ada produk Pre-Order yang aktif saat ini. Ditunggu ya!</p>
+            <span class="back-link" onclick="showPage('pageLanding')">← Kembali ke Utama</span>
+        </div>
+    </div>
+
+    <div id="pageCommission" class="page">
+        <span class="back-link" onclick="showPage('pageLanding')" style="margin-bottom: 25px;">← Kembali</span>
+        
+        <div class="header" style="margin-bottom: 25px;">
+            <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Commission Form</h2>
+            <p style="font-size: 0.9em; color: var(--text-light); margin-top: 0;">Silakan isi info dan pilih kategori komisi!</p>
+        </div>
+
+        <div class="card">
+            <div class="info-grid">
+                <div class="form-group">
+                    <label>NAME ORDER</label>
+                    <input type="text" id="userName" placeholder="Nama / Username kamu">
+                </div>
+                <div class="form-group">
+                    <label>CONTACT / PHONE NUMBER</label>
+                    <input type="text" id="userContact" placeholder="@twitter / Discord / WA">
+                </div>
+            </div>
+        </div>
+
+        <div class="category-title">Ych</div>
+        <div class="product-grid">
+            <div class="product-item" data-price-idr="95000" data-price-usd="20" data-name="YCH - Kotsouna">
+                <div>
+                    <div class="product-name">Kotsouna</div>
+                    <div class="product-price">95k / $20</div>
+                </div>
+                <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+            </div>
+            <div class="product-item" data-price-idr="70000" data-price-usd="17" data-name="YCH - Yochien">
+                <div>
+                    <div class="product-name">Yochien</div>
+                    <div class="product-price">70k / $17</div>
+                </div>
+                <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+            </div>
+            <div class="product-item" data-price-idr="95000" data-price-usd="20" data-name="YCH - Cimit">
+                <div>
+                    <div class="product-name">Cimit</div>
+                    <div class="product-price">95k / $20</div>
+                </div>
+                <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+            </div>
+            <div class="product-item" data-price-idr="65000" data-price-usd="15" data-name="YCH - Ebi Furai">
+                <div>
+                    <div class="product-name">Ebi Furai</div>
+                    <div class="product-price">65k / $15</div>
+                </div>
+                <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+            </div>
+        </div>
+
+        <div class="category-title">Logo Commission</div>
+        <div class="product-grid" style="grid-template-columns: 1fr;">
+            <div class="product-item" data-price-idr="250000" data-price-usd="30" data-name="Logo Commission">
+                <div>
+                    <div class="product-name">Logo Commission</div>
+                    <div class="product-price">Start From 250k / $30</div>
+                </div>
+                <div class="product-desc">Estimated 1 week to 3 Weeks (depends on its difficulty and queue)</div>
+            </div>
+        </div>
+
+        <div style="height: 100px;"></div>
+    </div>
+
+</div>
+
+<div id="commissionBar" class="bottom-bar" style="display: none;">
+    <div class="bottom-container">
+        <div>
+            <div style="font-size: 0.75em; color: var(--text-light); font-weight: bold;">TOTAL ESTIMASI</div>
+            <div id="totalDisplay" style="font-weight: bold; color: var(--primary-hover); font-size: 1.1em;">Rp 0 / $0</div>
+        </div>
+        <button class="btn-checkout" id="btnCheckout" disabled onclick="showReceipt()">Check Struk</button>
+    </div>
+</div>
+
+<div id="receiptModal" class="modal">
+    <div class="modal-content">
+        <div id="captureArea" class="receipt-container">
+            <h2 style="text-align: center; color: var(--primary-hover); margin: 0;">✿ Souffales Struk ✿</h2>
+            <p style="text-align: center; font-size: 0.8em; margin: 5px 0 20px; color: var(--text-light);">Order Confirmation Receipt</p>
+            <hr style="border: none; border-top: 3px dashed var(--primary); margin-bottom: 15px;">
+            
+            <div class="r-row"><span>Nama:</span> <span id="rName"></span></div>
+            <div class="r-row"><span>Kontak:</span> <span id="rContact"></span></div>
+            <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
+            
+            <div style="font-size: 0.85em; font-weight: bold; color: var(--primary-hover); margin-bottom: 10px;">ITEM YANG DIPILIH:</div>
+            <div id="rItems"></div>
+            
+            <div class="r-total-box">
+                <span>TOTAL:</span>
+                <span id="rTotal">Rp 0 / $0</span>
+            </div>
+            <p style="font-size: 0.75em; text-align: center; margin-top: 20px; color: var(--text-light); font-weight: 600;">Silakan simpan gambar ini & kirim ke DM untuk submit order ya! ✨</p>
+        </div>
+        <button class="btn-checkout" onclick="downloadReceipt()" style="width: 100%; margin-top: 15px;">📸 Simpan Jadi Gambar</button>
+        <button onclick="closeModal()" style="width: 100%; background: none; border: none; margin-top: 12px; color: var(--text-light); font-weight: bold; cursor: pointer;">Tutup</button>
+    </div>
+</div>
+
+<script>
+    let selectedItems = [];
+    let totalIDR = 0;
+    let totalUSD = 0;
+
+    // Fungsi Navigasi Halaman (Memperbaiki tombol utama)
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        
+        // Atur kemunculan bar totalan di bawah
+        document.getElementById('commissionBar').style.display = (pageId === 'pageCommission') ? 'flex' : 'none';
+        window.scrollTo(0, 0);
+    }
+
+    // Fungsi Pilih Item Produk
+    document.querySelectorAll('.product-item').forEach(item => {
+        item.addEventListener('click', function() {
+            this.classList.toggle('selected');
+            const name = this.getAttribute('data-name');
+            const priceIdr = parseInt(this.getAttribute('data-price-idr'));
+            const priceUsd = parseInt(this.getAttribute('data-price-usd'));
+
+            if (this.classList.contains('selected')) {
+                selectedItems.push({ name, priceIdr, priceUsd });
+            } else {
+                selectedItems = selectedItems.filter(i => i.name !== name);
+            }
+            updateTotal();
+        });
+    });
+
+    // Fungsi Hitung Total
+    function updateTotal() {
+        totalIDR = selectedItems.reduce((sum, item) => sum + item.priceIdr, 0);
+        totalUSD = selectedItems.reduce((sum, item) => sum + item.priceUsd, 0);
+        
+        document.getElementById('totalDisplay').innerText = `Rp ${totalIDR.toLocaleString('id-ID')} / $${totalUSD}`;
+        document.getElementById('btnCheckout').disabled = selectedItems.length === 0;
+    }
+
+    // Fungsi Tampilkan Struk Belanjaan
+    function showReceipt() {
+        const nama = document.getElementById('userName').value.trim();
+        const kontak = document.getElementById('userContact').value.trim();
+        
+        if (!nama || !kontak) {
+            alert("Harap isi Name Order dan Contact kamu dulu ya! ✿");
+            return;
+        }
+
+        document.getElementById('rName').innerText = nama;
+        document.getElementById('rContact').innerText = kontak;
+        
+        const itemBox = document.getElementById('rItems');
+        itemBox.innerHTML = '';
+        
+        selectedItems.forEach(item => {
+            itemBox.innerHTML += `
+                <div class="r-row" style="margin-bottom: 8px;">
+                    <span style="color: var(--text-dark); font-weight: 500;">• ${item.name}</span>
+                    <span>Rp ${item.priceIdr.toLocaleString('id-ID')} / $${item.priceUsd}</span>
+                </div>`;
+        });
+
+        document.getElementById('rTotal').innerText = `Rp ${totalIDR.toLocaleString('id-ID')} / $${totalUSD}`;
+        document.getElementById('receiptModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('receiptModal').style.display = 'none';
+    }
+
+    // Fungsi Simpan Gambar Struk
+    function downloadReceipt() {
+        const area = document.getElementById('captureArea');
+        html2canvas(area, { 
+            backgroundColor: "#fffcf4",
+            scale: 2
+        }).then(canvas => {
+            const link = document.createElement('a');
+            const clientName = document.getElementById('userName').value.replace(/[^a-zA-Z0-9]/g, "");
+            link.download = `Order_Souffales_${clientName || 'Client'}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
+
+</body>
+</html>
