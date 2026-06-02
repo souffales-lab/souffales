@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souffales Commission & Merch Store</title>
-    <!-- Memanggil library html2canvas untuk mengubah HTML jadi Gambar -->
+    <title>Commission & Merch Store</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         /* --- TEMA WARNA COKLAT MUDA & MINIMALIS --- */
@@ -48,8 +47,42 @@
         /* --- FORM INFO --- */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
         .form-group label { display: block; font-size: 0.85em; font-weight: bold; margin-bottom: 8px; color: var(--primary-hover); }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 2px solid transparent; border-radius: 10px; background: var(--white); color: var(--text-dark); box-sizing: border-box; outline: none; transition: 0.3s; }
+        
+        /* Modifikasi input dan select agar tampilannya kembar identik */
+        .form-group input, .form-group select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 2px solid transparent; 
+            border-radius: 10px; 
+            background: var(--white); 
+            color: var(--text-dark); 
+            box-sizing: border-box; 
+            outline: none; 
+            transition: 0.3s; 
+            font-size: 14px;
+            font-family: inherit;
+        }
         .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
+        
+        /* Mempercantik tampilan dropdown select bawaan browser */
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            /* Tambahan icon panah minimalis modern di kanan */
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238D6E63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        /* Merapikan warna teks pilihan utama (placeholder) */
+        .form-group select:invalid,
+        .form-group select option[value=""] {
+            color: #a0a0a0;
+        }
 
         /* --- KATEGORI & PRODUK --- */
         .category-title { font-size: 1.2em; font-weight: bold; color: var(--primary-hover); margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px dashed var(--primary); }
@@ -129,7 +162,6 @@
         <p>Pilih item yang ingin kamu pesan di bawah ini!</p>
     </div>
 
-    <!-- Informasi Pemesan -->
     <div class="card">
         <div class="info-grid">
             <div class="form-group">
@@ -138,10 +170,8 @@
             </div>
             <div class="form-group">
                 <label>CONTACT/NO TELEPON</label>
-                <input type="text" id="Contact" placeholder="contoh: @souffales dc / 085179968670">
-            </div>
-                <select id="Contact Platform">
-                    <option value="">Pilih platform...</option>
+                <select id="userPlatform" required>
+                    <option value="" disabled selected hidden>Pilih platform...</option>
                     <option value="Twitter / X">Twitter / X</option>
                     <option value="Instagram">Instagram</option>
                     <option value="Discord">Discord</option>
@@ -150,12 +180,10 @@
         </div>
     </div>
 
-    <!-- Pilihan Produk -->
     <div class="card" id="productContainer">
         
         <div class="category-title">Emotes</div>
         <div class="product-grid">
-            <!-- Isi tag <img> dengan link gambar produkmu -->
             <div class="product-item" data-price="50000" data-name="Emote 1">
                 <div class="product-img">Emote 1</div>
                 <div class="product-name">Emote 1</div>
@@ -189,7 +217,6 @@
 
     </div>
 
-    <!-- Lisensi -->
     <div class="card">
         <div class="license-wrap">
             <div class="license-info">
@@ -203,7 +230,6 @@
         </div>
     </div>
 
-    <!-- Ringkasan Pesanan -->
     <div class="card">
         <h3 style="margin-top: 0; color: var(--primary-hover);">Ringkasan Order</h3>
         <div class="summary-row"><span>Item Terpilih</span><span id="summaryCount">0 item</span></div>
@@ -214,7 +240,6 @@
 
 </div>
 
-<!-- Floating Bar Checkout -->
 <div class="bottom-bar">
     <div class="bottom-total-wrap">
         <span class="bottom-total-label">TOTAL (Min. 1 Item)</span>
@@ -224,12 +249,10 @@
 </div>
 
 
-<!-- ================= MODAL RECEIPT (DISembunyikan by Default) ================= -->
 <div id="receiptModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeReceipt()">&times;</span>
         
-        <!-- Ini area yang akan di-convert jadi gambar -->
         <div id="captureArea" class="receipt-container">
             <div class="r-logo">✿</div>
             <h2 class="r-title">Order Commission</h2>
@@ -240,15 +263,13 @@
             <div class="r-details">
                 <div class="r-row"><span>Nama</span> <span id="rName">@namakamu</span></div>
                 <div class="r-row"><span>Platform</span> <span id="rPlatform">Instagram</span></div>
-                <div class="r-row"><span>Tanggal</span> <span id="rDate">1 Juni 2026</span></div>
+                <div class="r-row"><span>Tanggal</span> <span id="rDate">-</span></div>
                 <div class="r-row"><span>Lisensi</span> <span id="rLicense">Personal</span></div>
-                <div class="r-row"><span>Jumlah</span> <span id="rQty">5 item</span></div>
+                <div class="r-row"><span>Jumlah</span> <span id="rQty">0 item</span></div>
             </div>
 
             <div class="r-items-title">Item yang Dipilih:</div>
-            <div class="r-items-grid" id="rSelectedItems">
-                <!-- Gambar item terpilih akan masuk ke sini otomatis -->
-            </div>
+            <div class="r-items-grid" id="rSelectedItems"></div>
 
             <div class="r-total-box">
                 <span>Total</span>
@@ -260,13 +281,11 @@
             </div>
         </div>
 
-        <!-- Tombol Download -->
         <button class="btn-checkout" id="btnDownload" style="width: 100%; margin-top: 15px;">
             📸 Download Struk (Gambar)
         </button>
     </div>
 </div>
-<!-- ======================================================================== -->
 
 
 <script>
@@ -315,7 +334,6 @@
         calculateTotal();
     });
 
-    // --- FUNGSI MUNCULKAN STRUK ---
     function showReceipt() {
         const nama = document.getElementById('userName').value;
         const platform = document.getElementById('userPlatform').value;
@@ -325,11 +343,9 @@
             return;
         }
 
-        // Isi data ke struk
         document.getElementById('rName').innerText = nama;
         document.getElementById('rPlatform').innerText = platform;
         
-        // Format Tanggal Hari Ini
         const today = new Date();
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
         document.getElementById('rDate').innerText = today.toLocaleDateString('id-ID', options);
@@ -338,17 +354,15 @@
         document.getElementById('rQty').innerText = `${selectedItems.length} item`;
         document.getElementById('rTotalBox').innerText = formatRupiah(grandTotal);
 
-        // Kloning gambar/div dari item yang diklik ke dalam struk
         const rSelectedItemsBox = document.getElementById('rSelectedItems');
-        rSelectedItemsBox.innerHTML = ''; // bersihkan dulu
+        rSelectedItemsBox.innerHTML = '';
         
         selectedItems.forEach(item => {
             const imgDiv = item.querySelector('.product-img').cloneNode(true);
-            imgDiv.className = 'r-item-img'; // ubah class agar stylingnya pakai CSS struk
+            imgDiv.className = 'r-item-img';
             rSelectedItemsBox.appendChild(imgDiv);
         });
 
-        // Tampilkan Modal
         document.getElementById('receiptModal').style.display = 'flex';
     }
 
@@ -356,28 +370,24 @@
         document.getElementById('receiptModal').style.display = 'none';
     }
 
-    // --- FUNGSI CONVERT HTML KE GAMBAR (DOWNLOAD) ---
     document.getElementById('btnDownload').addEventListener('click', function() {
         const captureArea = document.getElementById('captureArea');
         const originalText = this.innerText;
         
-        // Ubah teks tombol pas lagi loading
         this.innerText = "⏳ Sedang memproses..."; 
         this.disabled = true;
 
         html2canvas(captureArea, {
-            scale: 2, // Biar kualitas gambarnya HD
-            backgroundColor: "#FDF8F5", // Warna background struk
-            useCORS: true // Wajib true kalau kamu pakai link gambar dari luar github
+            scale: 2,
+            backgroundColor: "#fffcf4",
+            useCORS: true
         }).then(canvas => {
-            // Proses bikin link download
             const link = document.createElement('a');
             const userName = document.getElementById('userName').value.replace('@', '');
             link.download = `Order_${userName}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
 
-            // Kembalikan tombol seperti semula
             this.innerText = originalText;
             this.disabled = false;
         }).catch(err => {
