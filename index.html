@@ -127,6 +127,9 @@
         </div>
 
         <a href="https://shopee.co.id/souffales" target="_blank" class="nav-button">🛒 Shopee Store</a>
+        
+        <a href="#" target="_blank" class="nav-button">📖 Brand Profile</a>
+
         <div onclick="showPage('pagePreOrder')" class="nav-button">📦 Pre-Order Merch</div>
         <div onclick="showPage('pageCommission')" class="nav-button">🎨 Order Commission</div>
     </div>
@@ -297,7 +300,6 @@
 </div>
 
 <script>
-    // Menyimpan data pesanan per-item id
     let orderData = {
         'item-kotsouna': { qty: 0, priceIdr: 95000, priceUsd: 20, name: "YCH - Kotsouna" },
         'item-yochien':  { qty: 0, priceIdr: 70000, priceUsd: 17, name: "YCH - Yochien" },
@@ -313,7 +315,6 @@
         window.scrollTo(0, 0);
     }
 
-    // Fungsi menambah dan mengurangi jumlah item
     function changeQty(itemId, amount) {
         let item = orderData[itemId];
         let cardElement = document.getElementById(itemId);
@@ -321,7 +322,6 @@
         item.qty += amount;
         if (item.qty < 0) item.qty = 0;
 
-        // Atur efek visual border jika dipilih
         if (item.qty > 0) {
             cardElement.classList.add('selected');
         } else {
@@ -332,7 +332,6 @@
         updateTotal();
     }
 
-    // Fungsi Hitung Total Seluruh Item Terpilih
     function updateTotal() {
         let totalIDR = 0;
         let totalUSD = 0;
