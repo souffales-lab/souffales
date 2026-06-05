@@ -56,8 +56,7 @@
             object-fit: cover; 
         }
         .avatar-placeholder {
-            font-size: 40px;
-            line-height: 1;
+            font-size: 30px;
         }
         
         .nav-button {
@@ -103,7 +102,7 @@
         
         .product-preview-img { width: 100%; aspect-ratio: 1 / 1; border-radius: 10px; background: #fffcf4; margin-bottom: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(160, 120, 85, 0.1); }
         .product-preview-img img { width: 100%; height: 100%; object-fit: cover; }
-        .no-img-placeholder { font-size: 0.85em; color: var(--text-light); text-align: center; padding: 15px; font-style: italic; font-weight: 500; }
+        .no-img-placeholder { font-size: 0.75em; color: var(--text-light); text-align: center; padding: 10px; font-style: italic; }
 
         .product-name { font-weight: bold; font-size: 0.95em; margin-bottom: 3px; }
         .product-price { color: var(--primary-hover); font-weight: bold; font-size: 0.85em; margin-bottom: 8px; }
@@ -156,9 +155,8 @@
     <div id="pageLanding" class="page active">
         <div class="profile-area">
             <div class="avatar">
-                <!-- Jika profile.jpg belum di-upload, otomatis pakai emoji cadangan -->
-                <img src="profile.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span class="avatar-placeholder" style="display:none;">🎨</span>
+                <img src="profile.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="avatar-placeholder" style="display:none;">✨</span>
             </div>
             <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Souffales ✨</h2>
             <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0; letter-spacing: 0.3px;">Illustrator | Chibi Art & Merch Design</p>
@@ -207,7 +205,7 @@
             
             <div class="product-item" id="item-kotsouna" data-price-idr="95000" data-price-usd="20" data-name="YCH - Kotsouna">
                 <div class="product-preview-img">
-                    <img src="Kotsouna.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="Kotsouna.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="no-img-placeholder" style="display:none;">🖼️ Kotsouna Preview</div>
                 </div>
                 <div>
@@ -226,7 +224,7 @@ Let’s transform your character into a tiny plushie friend today! 🧸💖</div
 
             <div class="product-item" id="item-yochien" data-price-idr="70000" data-price-usd="17" data-name="YCH - Yochien">
                 <div class="product-preview-img">
-                    <img src="Yochien.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="Yochien.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="no-img-placeholder" style="display:none;">🖼️ Yochien Preview</div>
                 </div>
                 <div>
@@ -245,7 +243,7 @@ Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div
 
             <div class="product-item" id="item-cimit" data-price-idr="95000" data-price-usd="20" data-name="YCH - Cimit">
                 <div class="product-preview-img">
-                    <img src="Cimit.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="Cimit.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="no-img-placeholder" style="display:none;">🖼️ Cimit Preview</div>
                 </div>
                 <div>
@@ -264,7 +262,7 @@ The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
 
             <div class="product-item" id="item-ebifurai" data-price-idr="65000" data-price-usd="15" data-name="YCH - Ebi Furai">
                 <div class="product-preview-img">
-                    <img src="EbiFurai.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="EbiFurai.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="no-img-placeholder" style="display:none;">🖼️ Ebi Furai Preview</div>
                 </div>
                 <div>
@@ -288,10 +286,9 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
         <div class="product-grid" style="grid-template-columns: 1fr;">
             
             <div class="product-item" id="item-logo" data-price-idr="250000" data-price-usd="30" data-name="Logo Commission">
-                <!-- Dilengkapi dengan sistem cadangan jika LogoCommission.jpg belum diupload -->
                 <div class="product-preview-img" style="aspect-ratio: 2.5 / 1;">
-                    <img src="LogoCommission.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="no-img-placeholder" style="display:none;">✨ Logo Commission Style ✨</div>
+                    <img src="LogoCommission.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Logo Commission Sample Banner</div>
                 </div>
                 <div>
                     <div class="product-name">Logo Commission</div>
