@@ -135,7 +135,7 @@
         .r-row span:last-child { font-weight: bold; color: var(--text-dark); }
         .r-total-box { background: var(--primary-hover); color: white; padding: 15px; border-radius: 12px; text-align: center; font-weight: bold; margin-top: 20px; font-size: 1.1em; display: flex; justify-content: space-between; }
         
-        /* Tambahan Style Informasi Kontak di Struk */
+        /* Style Informasi Kontak di Struk */
         .r-contact-info { margin-top: 20px; padding: 12px; background: #FFFDF9; border: 1px dashed var(--primary); border-radius: 10px; font-size: 0.85em; color: var(--text-dark); }
         .r-contact-info p { margin: 0 0 6px 0; font-weight: bold; color: var(--primary-hover); }
         .r-contact-info ul { margin: 0; padding-left: 15px; list-style-type: disc; color: var(--text-light); }
@@ -185,6 +185,7 @@
             <p style="font-size: 0.9em; color: var(--text-light); margin-top: 0;">Please fill in your info and select your commission category!</p>
         </div>
 
+        <!-- 1. BIODATA PEMESAN -->
         <div class="card">
             <div class="info-grid">
                 <div class="form-group">
@@ -198,34 +199,7 @@
             </div>
         </div>
 
-        <div class="category-title">Options</div>
-        <div class="card" style="margin-bottom: 15px;">
-            <div class="form-group">
-                <label class="checkbox-container">
-                    <input type="checkbox" id="chkCommercial" onchange="updateTotal()">
-                    Commercial Use
-                </label>
-                <p class="option-desc">
-                    Commercial Use means you can use the artwork for things that generate income, like twitch/youtube emotes, selling physical merch, or promotions! ✨ Select this option to get full business rights!
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="form-group">
-                <label>Turn into merchandise!</label>
-                <select id="selectMerch" onchange="updateTotal()">
-                    <option value="none" data-price-idr="0" data-price-usd="0">-- No Merchandise --</option>
-                    <option value="keychain" data-price-idr="25000" data-price-usd="2">Keychain (+25k / $2)</option>
-                    <option value="phonestrap" data-price-idr="15000" data-price-usd="1.5">Phonestrap (+15k / $1.5)</option>
-                    <option value="pin" data-price-idr="10000" data-price-usd="1">Pin Badge 4.4cm (+10k / $1)</option>
-                </select>
-                <p class="option-desc">
-                    Turn your commission into perfect sized merchandise! Limited and personal only for you ✨
-                </p>
-            </div>
-        </div>
-
+        <!-- 2. PILIHAN COMMISSION: YCH -->
         <div class="category-title">Ych</div>
         <div class="product-grid">
             
@@ -307,6 +281,7 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
 
         </div>
 
+        <!-- 3. PILIHAN COMMISSION: LOGO -->
         <div class="category-title">Logo Commission</div>
         <div class="product-grid" style="grid-template-columns: 1fr;">
             
@@ -327,6 +302,35 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
                 </div>
             </div>
 
+        </div>
+
+        <!-- 4. OPTIONS (PINDAH KE BAWAH PILIHAN COMMISSION) -->
+        <div class="category-title">Options</div>
+        <div class="card" style="margin-bottom: 15px;">
+            <div class="form-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="chkCommercial" onchange="updateTotal()">
+                    Commercial Use
+                </label>
+                <p class="option-desc">
+                    Commercial Use means you can use the artwork for things that generate income, like twitch/youtube emotes, selling physical merch, or promotions! ✨ Select this option to get full business rights!
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="form-group">
+                <label>Turn into merchandise!</label>
+                <select id="selectMerch" onchange="updateTotal()">
+                    <option value="none" data-price-idr="0" data-price-usd="0">-- No Merchandise --</option>
+                    <option value="keychain" data-price-idr="25000" data-price-usd="2">Keychain (+25k / $2)</option>
+                    <option value="phonestrap" data-price-idr="15000" data-price-usd="1.5">Phonestrap (+15k / $1.5)</option>
+                    <option value="pin" data-price-idr="10000" data-price-usd="1">Pin Badge 4.4cm (+10k / $1)</option>
+                </select>
+                <p class="option-desc">
+                    Turn your commission into perfect sized merchandise! Limited and personal only for you ✨
+                </p>
+            </div>
         </div>
 
         <div style="height: 100px;"></div>
@@ -363,7 +367,7 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
                 <span id="rTotal">Rp 0 / $0</span>
             </div>
 
-            <!-- BLOK KONTAK PENJUAL TERBARU -->
+            <!-- BLOK KONTAK PENJUAL -->
             <div class="r-contact-info">
                 <p>Contact me on</p>
                 <ul>
