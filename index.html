@@ -89,6 +89,12 @@
         .form-group label { display: block; font-size: 0.85em; font-weight: bold; margin-bottom: 8px; color: var(--primary-hover); }
         .form-group input { width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; box-sizing: border-box; font-family: inherit; color: var(--text-dark); }
 
+        /* Styles tambahan untuk input select dan checkbox form */
+        .form-group select { width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; box-sizing: border-box; font-family: inherit; color: var(--text-dark); background: var(--white); font-weight: 500; }
+        .option-desc { font-size: 0.78em; color: var(--text-light); line-height: 1.4; margin: 6px 0 0 0; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold; font-size: 0.95em; }
+        .checkbox-container input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-hover); }
+
         /* --- PRODUCT GRID & CONTAINER --- */
         .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .product-item { background: var(--white); border-radius: 15px; padding: 12px; border: 3px solid transparent; transition: 0.3s; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
@@ -100,7 +106,7 @@
 
         .product-name { font-weight: bold; font-size: 0.95em; margin-bottom: 3px; }
         .product-price { color: var(--primary-hover); font-weight: bold; font-size: 0.85em; margin-bottom: 8px; }
-        .product-desc { font-size: 0.72em; color: var(--text-light); line-height: 1.3; margin-bottom: 15px; }
+        .product-desc { font-size: 0.75em; color: var(--text-light); line-height: 1.4; margin-bottom: 15px; white-space: pre-line; }
 
         /* --- COUNTER SYSTEM (+/-) --- */
         .counter-wrapper { display: flex; align-items: center; justify-content: space-between; background: var(--bg-body); border-radius: 8px; padding: 4px; border: 1px solid rgba(160, 120, 85, 0.2); margin-top: auto; }
@@ -129,6 +135,13 @@
         .r-row span:last-child { font-weight: bold; color: var(--text-dark); }
         .r-total-box { background: var(--primary-hover); color: white; padding: 15px; border-radius: 12px; text-align: center; font-weight: bold; margin-top: 20px; font-size: 1.1em; display: flex; justify-content: space-between; }
         
+        /* Tambahan Style Informasi Kontak di Struk */
+        .r-contact-info { margin-top: 20px; padding: 12px; background: #FFFDF9; border: 1px dashed var(--primary); border-radius: 10px; font-size: 0.85em; color: var(--text-dark); }
+        .r-contact-info p { margin: 0 0 6px 0; font-weight: bold; color: var(--primary-hover); }
+        .r-contact-info ul { margin: 0; padding-left: 15px; list-style-type: disc; color: var(--text-light); }
+        .r-contact-info li { margin-bottom: 3px; font-weight: 500; }
+        .r-contact-info li span { color: var(--text-dark); font-weight: 600; }
+
         @media (max-width: 500px) {
             .info-grid { grid-template-columns: 1fr; }
             .product-grid { grid-template-columns: 1fr; }
@@ -143,21 +156,21 @@
         <div class="profile-area">
             <div class="avatar">
                 <img src="profile.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span class="avatar-placeholder" style="display:none;">✿</span>
+                <span class="avatar-placeholder" style="display:none;">✨</span>
             </div>
             <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Souffales ✨</h2>
             <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0; letter-spacing: 0.3px;">Illustrator | Chibi Art & Merch Design</p>
         </div>
 
         <a href="https://shopee.co.id/souffales" target="_blank" class="nav-button">🛒 Shopee Store</a>
-        <a href="#" target="_blank" class="nav-button">📖 Brand Profile</a>
+        <a href="#" target="_blank" class="nav-button">🍳 Brand Profile</a>
         <div onclick="showPage('pagePreOrder')" class="nav-button">📦 Pre-Order Merch</div>
         <div onclick="showPage('pageCommission')" class="nav-button">🎨 Order Commission</div>
     </div>
 
     <div id="pagePreOrder" class="page">
         <div class="coming-soon">
-            <h1 style="font-size: 3em; margin: 0;">✿</h1>
+            <h1 style="font-size: 3em; margin: 0;">⭐</h1>
             <h2 style="color: var(--primary-hover); margin-top: 10px;">Pre-Order Coming Soon</h2>
             <p style="color: var(--text-light);">There are no active Pre-Order products at the moment. Stay tuned!</p>
             <span class="back-link" onclick="showPage('pageLanding')">← Back to Main Page</span>
@@ -185,6 +198,34 @@
             </div>
         </div>
 
+        <div class="category-title">Options</div>
+        <div class="card" style="margin-bottom: 15px;">
+            <div class="form-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="chkCommercial" onchange="updateTotal()">
+                    Commercial Use
+                </label>
+                <p class="option-desc">
+                    Commercial Use means you can use the artwork for things that generate income, like twitch/youtube emotes, selling physical merch, or promotions! ✨ Select this option to get full business rights!
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="form-group">
+                <label>Turn into merchandise!</label>
+                <select id="selectMerch" onchange="updateTotal()">
+                    <option value="none" data-price-idr="0" data-price-usd="0">-- No Merchandise --</option>
+                    <option value="keychain" data-price-idr="25000" data-price-usd="2">Keychain (+25k / $2)</option>
+                    <option value="phonestrap" data-price-idr="15000" data-price-usd="1.5">Phonestrap (+15k / $1.5)</option>
+                    <option value="pin" data-price-idr="10000" data-price-usd="1">Pin Badge 4.4cm (+10k / $1)</option>
+                </select>
+                <p class="option-desc">
+                    Turn your commission into perfect sized merchandise! Limited and personal only for you ✨
+                </p>
+            </div>
+        </div>
+
         <div class="category-title">Ych</div>
         <div class="product-grid">
             
@@ -196,7 +237,9 @@
                 <div>
                     <div class="product-name">Kotsouna</div>
                     <div class="product-price">95k / $20</div>
-                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                    <div class="product-desc">With tiny hands, a huggable round body, and the sweetest expression, the Koutsouna style is made to melt hearts.
+
+Let’s transform your character into a tiny plushie friend today! 🧸💖</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-kotsouna', -1)">-</button>
@@ -213,7 +256,9 @@
                 <div>
                     <div class="product-name">Yochien</div>
                     <div class="product-price">70k / $17</div>
-                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                    <div class="product-desc">The cutest kindergarten ever! Tiny pocket-sized chibi, soft yellow kindergarten hat and cute uniform badge! 
+
+Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-yochien', -1)">-</button>
@@ -230,7 +275,9 @@
                 <div>
                     <div class="product-name">Cimit</div>
                     <div class="product-price">95k / $20</div>
-                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                    <div class="product-desc">Squishuest chibi ever ✨
+
+The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-cimit', -1)">-</button>
@@ -247,7 +294,9 @@
                 <div>
                     <div class="product-name">Ebi Furai</div>
                     <div class="product-price">65k / $15</div>
-                    <div class="product-desc">Estimated 5 Days to 1 Week (depends on its difficulty and queue)</div>
+                    <div class="product-desc">Oh my! Crispiest tempurs suit! 🍤
+
+Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-ebifurai', -1)">-</button>
@@ -298,7 +347,7 @@
 <div id="receiptModal" class="modal">
     <div class="modal-content">
         <div id="captureArea" class="receipt-container">
-            <h2 style="text-align: center; color: var(--primary-hover); margin: 0;">✿ Souffales Receipt ✿</h2>
+            <h2 style="text-align: center; color: var(--primary-hover); margin: 0;">✨ Souffales Receipt ✨</h2>
             <p style="text-align: center; font-size: 0.8em; margin: 5px 0 20px; color: var(--text-light);">Order Confirmation Receipt</p>
             <hr style="border: none; border-top: 3px dashed var(--primary); margin-bottom: 15px;">
             
@@ -313,6 +362,17 @@
                 <span>TOTAL:</span>
                 <span id="rTotal">Rp 0 / $0</span>
             </div>
+
+            <!-- BLOK KONTAK PENJUAL TERBARU -->
+            <div class="r-contact-info">
+                <p>Contact me on</p>
+                <ul>
+                    <li>Discord: <span>@souffales</span></li>
+                    <li>X: <span>@souffales</span></li>
+                    <li>WhatsApp: <span>+62 851-7996-8670</span></li>
+                </ul>
+            </div>
+
             <p style="font-size: 0.75em; text-align: center; margin-top: 20px; color: var(--text-light); font-weight: 600;">Please save this image & send it via DM to submit your order! ✨</p>
         </div>
         <button class="btn-checkout" onclick="downloadReceipt()" style="width: 100%; margin-top: 15px;">📸 Save as Image</button>
@@ -366,6 +426,22 @@
                 hasItems = true;
             }
         }
+
+        const isCommercial = document.getElementById('chkCommercial').checked;
+        if (isCommercial && hasItems) {
+            totalIDR *= 2;
+            totalUSD *= 2;
+        }
+
+        const merchSelect = document.getElementById('selectMerch');
+        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
+        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
+        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
+
+        if (hasItems) {
+            totalIDR += merchPriceIdr;
+            totalUSD += merchPriceUsd;
+        }
         
         document.getElementById('totalDisplay').innerText = `Rp ${totalIDR.toLocaleString('id-ID')} / $${totalUSD}`;
         document.getElementById('btnCheckout').disabled = !hasItems;
@@ -376,7 +452,7 @@
         const kontak = document.getElementById('userContact').value.trim();
         
         if (!nama || !kontak) {
-            alert("Please fill in your Name Order and Contact first! ✿");
+            alert("Please fill in your Name Order and Contact first! ✨");
             return;
         }
 
@@ -388,6 +464,7 @@
         
         let finalIDR = 0;
         let finalUSD = 0;
+        let hasItems = false;
 
         for (let key in orderData) {
             let item = orderData[key];
@@ -396,6 +473,7 @@
                 let subUsd = item.priceUsd * item.qty;
                 finalIDR += subIdr;
                 finalUSD += subUsd;
+                hasItems = true;
 
                 itemBox.innerHTML += `
                     <div class="r-row" style="margin-bottom: 8px;">
@@ -403,6 +481,36 @@
                         <span>Rp ${subIdr.toLocaleString('id-ID')} / $${subUsd}</span>
                     </div>`;
             }
+        }
+
+        const isCommercial = document.getElementById('chkCommercial').checked;
+        if (isCommercial && hasItems) {
+            let commAddIdr = finalIDR; 
+            let commAddUsd = finalUSD;
+            finalIDR *= 2;
+            finalUSD *= 2;
+
+            itemBox.innerHTML += `
+                <div class="r-row" style="margin-bottom: 8px; font-style: italic;">
+                    <span style="color: var(--text-dark); font-weight: 500;">• Commercial Use Fee (+100%)</span>
+                    <span>Rp ${commAddIdr.toLocaleString('id-ID')} / $${commAddUsd}</span>
+                </div>`;
+        }
+
+        const merchSelect = document.getElementById('selectMerch');
+        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
+        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
+        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
+
+        if (merchSelect.value !== "none" && hasItems) {
+            finalIDR += merchPriceIdr;
+            finalUSD += merchPriceUsd;
+
+            itemBox.innerHTML += `
+                <div class="r-row" style="margin-bottom: 8px; color: var(--primary-hover);">
+                    <span style="font-weight: 500;">• Add-on: ${selectedMerch.text.split(' (')[0]}</span>
+                    <span>Rp ${merchPriceIdr.toLocaleString('id-ID')} / $${merchPriceUsd}</span>
+                </div>`;
         }
 
         document.getElementById('rTotal').innerText = `Rp ${finalIDR.toLocaleString('id-ID')} / $${finalUSD}`;
