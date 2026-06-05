@@ -100,7 +100,6 @@
         .product-item { background: var(--white); border-radius: 15px; padding: 12px; border: 3px solid transparent; transition: 0.3s; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
         .product-item.selected { border-color: var(--primary-hover); background: #F9F1E7; }
         
-        /* Mengubah container preview agar ukurannya auto mengikuti size gambar asli */
         .product-preview-img { width: 100%; border-radius: 10px; background: #fffcf4; margin-bottom: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(160, 120, 85, 0.1); }
         .product-preview-img img { width: 100%; height: auto; display: block; object-fit: contain; }
         .no-img-placeholder { font-size: 0.75em; color: var(--text-light); text-align: center; padding: 20px; font-style: italic; }
@@ -248,7 +247,7 @@ Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div
                 <div>
                     <div class="product-name">Cimit</div>
                     <div class="product-price">95k / $20</div>
-                    <div class="product-desc">Squishiest chibi ever ✨
+                    <div class="product-desc">Squishuest chibi ever ✨
 
 The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 </div>
@@ -267,7 +266,7 @@ The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 <div>
                     <div class="product-name">Ebi Furai</div>
                     <div class="product-price">65k / $15</div>
-                    <div class="product-desc">Oh my! Crispiest tempura suit! 🍤
+                    <div class="product-desc">Oh my! Crispiest tempurs suit! 🍤
 
 Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div>
                 </div>
@@ -404,4 +403,134 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
         if (item.qty < 0) item.qty = 0;
 
         if (item.qty > 0) {
-            cardElement.classList.add('
+            cardElement.classList.add('selected');
+        } else {
+            cardElement.classList.remove('selected');
+        }
+
+        document.getElementById(`qty-${itemId}`).innerText = item.qty;
+        updateTotal();
+    }
+
+    function updateTotal() {
+        let totalIDR = 0;
+        let totalUSD = 0;
+        let hasItems = false;
+
+        for (let key in orderData) {
+            let item = orderData[key];
+            if (item.qty > 0) {
+                totalIDR += item.priceIdr * item.qty;
+                totalUSD += item.priceUsd * item.qty;
+                hasItems = true;
+            }
+        }
+
+        const isCommercial = document.getElementById('chkCommercial').checked;
+        if (isCommercial && hasItems) {
+            totalIDR *= 2;
+            totalUSD *= 2;
+        }
+
+        const merchSelect = document.getElementById('selectMerch');
+        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
+        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
+        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
+
+        if (hasItems) {
+            totalIDR += merchPriceIdr;
+            totalUSD += merchPriceUsd;
+        }
+        
+        document.getElementById('totalDisplay').innerText = `Rp ${totalIDR.toLocaleString('id-ID')} / $${totalUSD}`;
+        document.getElementById('btnCheckout').disabled = !hasItems;
+    }
+
+    function showReceipt() {
+        const nama = document.getElementById('userName').value.trim();
+        const kontak = document.getElementById('userContact').value.trim();
+        
+        if (!nama || !kontak) {
+            alert("Please fill in your Name Order and Contact first! ✨");
+            return;
+        }
+
+        document.getElementById('rName').innerText = nama;
+        document.getElementById('rContact').innerText = kontak;
+        
+        const itemBox = document.getElementById('rItems');
+        itemBox.innerHTML = '';
+        
+        let finalIDR = 0;
+        let finalUSD = 0;
+        let hasItems = false;
+
+        for (let key in orderData) {
+            let item = orderData[key];
+            if (item.qty > 0) {
+                let subIdr = item.priceIdr * item.qty;
+                let subUsd = item.priceUsd * item.qty;
+                finalIDR += subIdr;
+                finalUSD += subUsd;
+                hasItems = true;
+
+                itemBox.innerHTML += `
+                    <div class="r-row" style="margin-bottom: 8px;">
+                        <span style="color: var(--text-dark); font-weight: 500;">• ${item.name} <b style="color: var(--primary-hover)">x${item.qty}</b></span>
+                        <span>Rp ${subIdr.toLocaleString('id-ID')} / $${subUsd}</span>
+                    </div>`;
+            }
+        }
+
+        const isCommercial = document.getElementById('chkCommercial').checked;
+        if (isCommercial && hasItems) {
+            let commAddIdr = finalIDR; 
+            let commAddUsd = finalUSD;
+            finalIDR *= 2;
+            finalUSD *= 2;
+
+            itemBox.innerHTML += `
+                <div class="r-row" style="margin-bottom: 8px; font-style: italic;">
+                    <span style="color: var(--text-dark); font-weight: 500;">• Commercial Use Fee (+100%)</span>
+                    <span>Rp ${commAddIdr.toLocaleString('id-ID')} / $${commAddUsd}</span>
+                </div>`;
+        }
+
+        const merchSelect = document.getElementById('selectMerch');
+        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
+        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
+        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
+
+        if (merchSelect.value !== "none" && hasItems) {
+            finalIDR += merchPriceIdr;
+            finalUSD += merchPriceUsd;
+
+            itemBox.innerHTML += `
+                <div class="r-row" style="margin-bottom: 8px; color: var(--primary-hover);">
+                    <span style="font-weight: 500;">• Add-on: ${selectedMerch.text.split(' (')[0]} (Local Only)</span>
+                    <span>Rp ${merchPriceIdr.toLocaleString('id-ID')}</span>
+                </div>`;
+        }
+
+        document.getElementById('rTotal').innerText = `Rp ${finalIDR.toLocaleString('id-ID')} / $${finalUSD}`;
+        document.getElementById('receiptModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('receiptModal').style.display = 'none';
+    }
+
+    function downloadReceipt() {
+        const area = document.getElementById('captureArea');
+        html2canvas(area, { backgroundColor: "#fffcf4", scale: 2 }).then(canvas => {
+            const link = document.createElement('a');
+            const clientName = document.getElementById('userName').value.replace(/[^a-zA-Z0-9]/g, "");
+            link.download = `Order_Souffales_${clientName || 'Client'}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
+
+</body>
+</html>
