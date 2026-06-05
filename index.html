@@ -56,7 +56,8 @@
             object-fit: cover; 
         }
         .avatar-placeholder {
-            font-size: 30px;
+            font-size: 40px;
+            line-height: 1;
         }
         
         .nav-button {
@@ -102,7 +103,7 @@
         
         .product-preview-img { width: 100%; aspect-ratio: 1 / 1; border-radius: 10px; background: #fffcf4; margin-bottom: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(160, 120, 85, 0.1); }
         .product-preview-img img { width: 100%; height: 100%; object-fit: cover; }
-        .no-img-placeholder { font-size: 0.75em; color: var(--text-light); text-align: center; padding: 10px; font-style: italic; }
+        .no-img-placeholder { font-size: 0.85em; color: var(--text-light); text-align: center; padding: 15px; font-style: italic; font-weight: 500; }
 
         .product-name { font-weight: bold; font-size: 0.95em; margin-bottom: 3px; }
         .product-price { color: var(--primary-hover); font-weight: bold; font-size: 0.85em; margin-bottom: 8px; }
@@ -155,8 +156,9 @@
     <div id="pageLanding" class="page active">
         <div class="profile-area">
             <div class="avatar">
+                <!-- Jika profile.jpg belum di-upload, otomatis pakai emoji cadangan -->
                 <img src="profile.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span class="avatar-placeholder" style="display:none;">✨</span>
+                <span class="avatar-placeholder" style="display:none;">🎨</span>
             </div>
             <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Souffales ✨</h2>
             <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0; letter-spacing: 0.3px;">Illustrator | Chibi Art & Merch Design</p>
@@ -286,9 +288,10 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
         <div class="product-grid" style="grid-template-columns: 1fr;">
             
             <div class="product-item" id="item-logo" data-price-idr="250000" data-price-usd="30" data-name="Logo Commission">
+                <!-- Dilengkapi dengan sistem cadangan jika LogoCommission.jpg belum diupload -->
                 <div class="product-preview-img" style="aspect-ratio: 2.5 / 1;">
                     <img src="LogoCommission.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="no-img-placeholder" style="display:none;">🖼️ Logo Commission Sample Banner</div>
+                    <div class="no-img-placeholder" style="display:none;">✨ Logo Commission Style ✨</div>
                 </div>
                 <div>
                     <div class="product-name">Logo Commission</div>
@@ -304,7 +307,7 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
 
         </div>
 
-        <!-- 4. OPTIONS (PINDAH KE BAWAH PILIHAN COMMISSION) -->
+        <!-- 4. OPTIONS -->
         <div class="category-title">Options</div>
         <div class="card" style="margin-bottom: 15px;">
             <div class="form-group">
@@ -320,15 +323,15 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
 
         <div class="card">
             <div class="form-group">
-                <label>Turn into merchandise!</label>
+                <label>Turn into merchandise! (for local only)</label>
                 <select id="selectMerch" onchange="updateTotal()">
                     <option value="none" data-price-idr="0" data-price-usd="0">-- No Merchandise --</option>
-                    <option value="keychain" data-price-idr="25000" data-price-usd="2">Keychain (+25k / $2)</option>
-                    <option value="phonestrap" data-price-idr="15000" data-price-usd="1.5">Phonestrap (+15k / $1.5)</option>
-                    <option value="pin" data-price-idr="10000" data-price-usd="1">Pin Badge 4.4cm (+10k / $1)</option>
+                    <option value="keychain" data-price-idr="25000" data-price-usd="0">Keychain (+25k)</option>
+                    <option value="phonestrap" data-price-idr="15000" data-price-usd="0">Phonestrap (+15k)</option>
+                    <option value="pin" data-price-idr="10000" data-price-usd="0">Pin Badge 4.4cm (+10k)</option>
                 </select>
                 <p class="option-desc">
-                    Turn your commission into perfect sized merchandise! Limited and personal only for you ✨
+                    Turn your commission into perfect sized merchandise! Limited and personal only for you ✨ (for local only)
                 </p>
             </div>
         </div>
@@ -512,8 +515,8 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
 
             itemBox.innerHTML += `
                 <div class="r-row" style="margin-bottom: 8px; color: var(--primary-hover);">
-                    <span style="font-weight: 500;">• Add-on: ${selectedMerch.text.split(' (')[0]}</span>
-                    <span>Rp ${merchPriceIdr.toLocaleString('id-ID')} / $${merchPriceUsd}</span>
+                    <span style="font-weight: 500;">• Add-on: ${selectedMerch.text.split(' (')[0]} (Local Only)</span>
+                    <span>Rp ${merchPriceIdr.toLocaleString('id-ID')}</span>
                 </div>`;
         }
 
