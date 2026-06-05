@@ -96,13 +96,14 @@
         .checkbox-container input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-hover); }
 
         /* --- PRODUCT GRID & CONTAINER --- */
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; align-items: start; }
         .product-item { background: var(--white); border-radius: 15px; padding: 12px; border: 3px solid transparent; transition: 0.3s; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
         .product-item.selected { border-color: var(--primary-hover); background: #F9F1E7; }
         
-        .product-preview-img { width: 100%; aspect-ratio: 1 / 1; border-radius: 10px; background: #fffcf4; margin-bottom: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(160, 120, 85, 0.1); }
-        .product-preview-img img { width: 100%; height: 100%; object-fit: cover; }
-        .no-img-placeholder { font-size: 0.75em; color: var(--text-light); text-align: center; padding: 10px; font-style: italic; }
+        /* Mengubah container preview agar ukurannya auto mengikuti size gambar asli */
+        .product-preview-img { width: 100%; border-radius: 10px; background: #fffcf4; margin-bottom: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(160, 120, 85, 0.1); }
+        .product-preview-img img { width: 100%; height: auto; display: block; object-fit: contain; }
+        .no-img-placeholder { font-size: 0.75em; color: var(--text-light); text-align: center; padding: 20px; font-style: italic; }
 
         .product-name { font-weight: bold; font-size: 0.95em; margin-bottom: 3px; }
         .product-price { color: var(--primary-hover); font-weight: bold; font-size: 0.85em; margin-bottom: 8px; }
@@ -155,7 +156,6 @@
     <div id="pageLanding" class="page active">
         <div class="profile-area">
             <div class="avatar">
-                <!-- Jika belum ada profile.png, otomatis pakai emoji ✨ -->
                 <img src="profile.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="avatar-placeholder" style="display:none;">✨</span>
             </div>
@@ -186,7 +186,6 @@
             <p style="font-size: 0.9em; color: var(--text-light); margin-top: 0;">Please fill in your info and select your commission category!</p>
         </div>
 
-        <!-- 1. BIODATA PEMESAN -->
         <div class="card">
             <div class="info-grid">
                 <div class="form-group">
@@ -200,11 +199,9 @@
             </div>
         </div>
 
-        <!-- 2. PILIHAN COMMISSION: YCH -->
         <div class="category-title">Ych</div>
         <div class="product-grid">
             
-            <!-- Menggunakan kotsouna.png -->
             <div class="product-item" id="item-kotsouna" data-price-idr="95000" data-price-usd="20" data-name="YCH - Kotsouna">
                 <div class="product-preview-img">
                     <img src="kotsouna.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -224,7 +221,6 @@ Let’s transform your character into a tiny plushie friend today! 🧸💖</div
                 </div>
             </div>
 
-            <!-- Menggunakan yochien.png -->
             <div class="product-item" id="item-yochien" data-price-idr="70000" data-price-usd="17" data-name="YCH - Yochien">
                 <div class="product-preview-img">
                     <img src="yochien.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -244,7 +240,6 @@ Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div
                 </div>
             </div>
 
-            <!-- Menggunakan cimit.png -->
             <div class="product-item" id="item-cimit" data-price-idr="95000" data-price-usd="20" data-name="YCH - Cimit">
                 <div class="product-preview-img">
                     <img src="cimit.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -253,7 +248,7 @@ Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div
                 <div>
                     <div class="product-name">Cimit</div>
                     <div class="product-price">95k / $20</div>
-                    <div class="product-desc">Squishuest chibi ever ✨
+                    <div class="product-desc">Squishiest chibi ever ✨
 
 The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 </div>
@@ -264,7 +259,6 @@ The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 </div>
             </div>
 
-            <!-- Menggunakan ebi furai.png (Memakai enkripsi %20 untuk spasi di web) -->
             <div class="product-item" id="item-ebifurai" data-price-idr="65000" data-price-usd="15" data-name="YCH - Ebi Furai">
                 <div class="product-preview-img">
                     <img src="ebi%20furai.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -273,7 +267,7 @@ The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 <div>
                     <div class="product-name">Ebi Furai</div>
                     <div class="product-price">65k / $15</div>
-                    <div class="product-desc">Oh my! Crispiest tempurs suit! 🍤
+                    <div class="product-desc">Oh my! Crispiest tempura suit! 🍤
 
 Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div>
                 </div>
@@ -286,13 +280,11 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
 
         </div>
 
-        <!-- 3. PILIHAN COMMISSION: LOGO -->
         <div class="category-title">Logo Commission</div>
         <div class="product-grid" style="grid-template-columns: 1fr;">
             
-            <!-- Di screenshot belum ada file ini, disiapkan placeholder jika nanti kamu upload logo.png -->
             <div class="product-item" id="item-logo" data-price-idr="250000" data-price-usd="30" data-name="Logo Commission">
-                <div class="product-preview-img" style="aspect-ratio: 2.5 / 1;">
+                <div class="product-preview-img">
                     <img src="logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="no-img-placeholder" style="display:none;">🖼️ Logo Commission Sample Banner</div>
                 </div>
@@ -310,7 +302,6 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
 
         </div>
 
-        <!-- 4. OPTIONS -->
         <div class="category-title">Options</div>
         <div class="card" style="margin-bottom: 15px;">
             <div class="form-group">
@@ -373,7 +364,6 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
                 <span id="rTotal">Rp 0 / $0</span>
             </div>
 
-            <!-- BLOK KONTAK PENJUAL -->
             <div class="r-contact-info">
                 <p>Contact me on</p>
                 <ul>
@@ -414,134 +404,4 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
         if (item.qty < 0) item.qty = 0;
 
         if (item.qty > 0) {
-            cardElement.classList.add('selected');
-        } else {
-            cardElement.classList.remove('selected');
-        }
-
-        document.getElementById(`qty-${itemId}`).innerText = item.qty;
-        updateTotal();
-    }
-
-    function updateTotal() {
-        let totalIDR = 0;
-        let totalUSD = 0;
-        let hasItems = false;
-
-        for (let key in orderData) {
-            let item = orderData[key];
-            if (item.qty > 0) {
-                totalIDR += item.priceIdr * item.qty;
-                totalUSD += item.priceUsd * item.qty;
-                hasItems = true;
-            }
-        }
-
-        const isCommercial = document.getElementById('chkCommercial').checked;
-        if (isCommercial && hasItems) {
-            totalIDR *= 2;
-            totalUSD *= 2;
-        }
-
-        const merchSelect = document.getElementById('selectMerch');
-        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
-        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
-        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
-
-        if (hasItems) {
-            totalIDR += merchPriceIdr;
-            totalUSD += merchPriceUsd;
-        }
-        
-        document.getElementById('totalDisplay').innerText = `Rp ${totalIDR.toLocaleString('id-ID')} / $${totalUSD}`;
-        document.getElementById('btnCheckout').disabled = !hasItems;
-    }
-
-    function showReceipt() {
-        const nama = document.getElementById('userName').value.trim();
-        const kontak = document.getElementById('userContact').value.trim();
-        
-        if (!nama || !kontak) {
-            alert("Please fill in your Name Order and Contact first! ✨");
-            return;
-        }
-
-        document.getElementById('rName').innerText = nama;
-        document.getElementById('rContact').innerText = kontak;
-        
-        const itemBox = document.getElementById('rItems');
-        itemBox.innerHTML = '';
-        
-        let finalIDR = 0;
-        let finalUSD = 0;
-        let hasItems = false;
-
-        for (let key in orderData) {
-            let item = orderData[key];
-            if (item.qty > 0) {
-                let subIdr = item.priceIdr * item.qty;
-                let subUsd = item.priceUsd * item.qty;
-                finalIDR += subIdr;
-                finalUSD += subUsd;
-                hasItems = true;
-
-                itemBox.innerHTML += `
-                    <div class="r-row" style="margin-bottom: 8px;">
-                        <span style="color: var(--text-dark); font-weight: 500;">• ${item.name} <b style="color: var(--primary-hover)">x${item.qty}</b></span>
-                        <span>Rp ${subIdr.toLocaleString('id-ID')} / $${subUsd}</span>
-                    </div>`;
-            }
-        }
-
-        const isCommercial = document.getElementById('chkCommercial').checked;
-        if (isCommercial && hasItems) {
-            let commAddIdr = finalIDR; 
-            let commAddUsd = finalUSD;
-            finalIDR *= 2;
-            finalUSD *= 2;
-
-            itemBox.innerHTML += `
-                <div class="r-row" style="margin-bottom: 8px; font-style: italic;">
-                    <span style="color: var(--text-dark); font-weight: 500;">• Commercial Use Fee (+100%)</span>
-                    <span>Rp ${commAddIdr.toLocaleString('id-ID')} / $${commAddUsd}</span>
-                </div>`;
-        }
-
-        const merchSelect = document.getElementById('selectMerch');
-        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
-        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
-        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
-
-        if (merchSelect.value !== "none" && hasItems) {
-            finalIDR += merchPriceIdr;
-            finalUSD += merchPriceUsd;
-
-            itemBox.innerHTML += `
-                <div class="r-row" style="margin-bottom: 8px; color: var(--primary-hover);">
-                    <span style="font-weight: 500;">• Add-on: ${selectedMerch.text.split(' (')[0]} (Local Only)</span>
-                    <span>Rp ${merchPriceIdr.toLocaleString('id-ID')}</span>
-                </div>`;
-        }
-
-        document.getElementById('rTotal').innerText = `Rp ${finalIDR.toLocaleString('id-ID')} / $${finalUSD}`;
-        document.getElementById('receiptModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('receiptModal').style.display = 'none';
-    }
-
-    function downloadReceipt() {
-        const area = document.getElementById('captureArea');
-        html2canvas(area, { backgroundColor: "#fffcf4", scale: 2 }).then(canvas => {
-            const link = document.createElement('a');
-            const clientName = document.getElementById('userName').value.replace(/[^a-zA-Z0-9]/g, "");
-            link.download = `Order_Souffales_${clientName || 'Client'}.png`;
-            link.href = canvas.toDataURL();
-            link.click();
-        });
-    }
-</script>
-
-</body>
-</html>
+            cardElement.classList.add('
