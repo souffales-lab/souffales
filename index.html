@@ -1,112 +1,3 @@
-Skip to content
-souffales-lab
-souffales
-Repository navigation
-Code
-Issues
-Pull requests
-Agents
-Actions
-Projects
-Wiki
-Security and quality
-Insights
-Settings
-Files
-Go to file
-t
-T
-README.md
-cimit.png
-ebi furai.png
-index.html
-katalog_po.png
-kotsouna.png
-logo commission.png
-yochien.png
-souffales
-/
-index.html
-in
-main
-
-Edit
-
-Preview
-Indent mode
-
-Spaces
-Indent size
-
-4
-Line wrap mode
-
-No wrap
-Editing index.html file contents
-  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,4 +62,723 @@ Editing index.html file contents
             height: 100%;
             object-fit: cover; 
         }
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+        .avatar-placeholder {
+            font-size: 30px;
+        }
+        
+        .nav-button {
+            display: block;
+            width: 100%;
+            background: var(--white);
+            color: var(--text-dark);
+            text-decoration: none;
+            text-align: center;
+            padding: 18px;
+            margin-bottom: 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 2px solid transparent;
+            cursor: pointer;
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(80, 46, 45, 0.04);
+        }
+        .nav-button:hover {
+            background: var(--bg-card);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(80, 46, 45, 0.08);
+        }
+
+        /* --- FORM STYLES --- */
+        .card { 
+            background: var(--bg-card); 
+            border-radius: 24px; 
+            padding: 25px; 
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(80, 46, 45, 0.03);
+        }
+        .category-title { 
+            font-size: 1.4em; 
+            font-weight: 800; 
+            color: var(--primary-hover); 
+            margin: 35px 0 15px 0; 
+            padding-bottom: 8px; 
+            border-bottom: 2px dashed var(--primary); 
+            letter-spacing: -0.3px;
+        }
+        
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group { margin-bottom: 5px; }
+        .form-group label { display: block; font-size: 0.8em; font-weight: 800; margin-bottom: 8px; color: var(--primary-hover); letter-spacing: 0.5px; }
+        .form-group input { 
+            width: 100%; 
+            padding: 14px; 
+            border-radius: 12px; 
+            border: 2px solid transparent; 
+            outline: none; 
+            box-sizing: border-box; 
+            font-family: inherit; 
+            color: var(--text-dark); 
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus {
+            border-color: var(--primary-hover);
+        }
+
+        .form-group select { 
+            width: 100%; 
+            padding: 14px; 
+            border-radius: 12px; 
+            border: 2px solid transparent; 
+            outline: none; 
+            box-sizing: border-box; 
+            font-family: inherit; 
+            color: var(--text-dark); 
+            background: var(--white); 
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .form-group select:focus {
+            border-color: var(--primary-hover);
+        }
+        .option-desc { font-size: 0.8em; color: var(--text-light); line-height: 1.5; margin: 8px 0 0 0; }
+        
+        .checkbox-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            cursor: pointer; 
+            font-weight: 800; 
+            font-size: 0.95em; 
+            user-select: none;
+        }
+        .checkbox-container input { 
+            width: 20px; 
+            height: 20px; 
+            cursor: pointer; 
+            accent-color: var(--primary-hover); 
+        }
+
+        /* --- PRODUCT GRID & CONTAINER --- */
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+        .product-item { 
+            background: var(--white); 
+            border-radius: 20px; 
+            padding: 15px; 
+            border: 3px solid transparent; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+            box-sizing: border-box; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            position: relative;
+            box-shadow: 0 6px 16px rgba(80, 46, 45, 0.03);
+        }
+        .product-item.selected { border-color: var(--primary-hover); background: #FFFDF9; transform: scale(1.02); }
+        
+        .product-preview-img { 
+            width: 100%; 
+            border-radius: 14px; 
+            background: var(--bg-body); 
+            margin-bottom: 12px; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px solid rgba(160, 120, 85, 0.08);
+            aspect-ratio: 1 / 1;
+        }
+        .product-preview-img img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .no-img-placeholder { font-size: 0.8em; color: var(--text-light); text-align: center; padding: 20px; font-style: italic; font-weight: 500; }
+
+        .product-name { font-weight: 800; font-size: 1em; margin-bottom: 4px; letter-spacing: -0.2px; }
+        .product-price { color: var(--primary-hover); font-weight: 800; font-size: 0.9em; margin-bottom: 10px; }
+        .product-desc { font-size: 0.78em; color: var(--text-light); line-height: 1.5; margin-bottom: 20px; white-space: pre-line; }
+
+        /* --- COUNTER SYSTEM (+/-) --- */
+        .counter-wrapper { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            background: var(--bg-body); 
+            border-radius: 10px; 
+            padding: 5px; 
+            border: 1px solid rgba(160, 120, 85, 0.15); 
+            margin-top: auto; 
+        }
+        .btn-counter { 
+            background: var(--primary); 
+            color: var(--text-dark); 
+            border: none; 
+            width: 32px; 
+            height: 32px; 
+            border-radius: 8px; 
+            font-weight: 800; 
+            font-size: 1.2em; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: all 0.2s ease; 
+        }
+        .btn-counter:hover { background: var(--primary-hover); color: white; }
+        .counter-value { font-weight: 800; font-size: 0.95em; min-width: 24px; text-align: center; }
+
+        /* --- FLOATING BAR --- */
+        .bottom-bar { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: var(--white); 
+            padding: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 -10px 30px rgba(80, 46, 45, 0.06); 
+            z-index: 50; 
+            box-sizing: border-box; 
+            border-top: 1px solid rgba(160, 120, 85, 0.1);
+        }
+        .bottom-container { max-width: 600px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .btn-checkout { 
+            background: var(--primary-hover); 
+            color: white; 
+            border: none; 
+            padding: 14px 28px; 
+            border-radius: 14px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 12px rgba(160, 120, 85, 0.25);
+        }
+        .btn-checkout:disabled { background: #d3c3b4; cursor: not-allowed; box-shadow: none; }
+        .btn-checkout:not(:disabled):hover { background: var(--text-dark); transform: translateY(-2px); }
+
+        /* --- MODAL STRUK --- */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 100; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(80, 46, 45, 0.4); 
+            align-items: center; 
+            justify-content: center; 
+            backdrop-filter: blur(6px); 
+            padding: 20px; 
+            box-sizing: border-box; 
+        }
+        .modal-content { 
+            background: var(--bg-body); 
+            border-radius: 28px; 
+            width: 100%; 
+            max-width: 450px; 
+            padding: 24px; 
+            position: relative; 
+            max-height: 90vh; 
+            overflow-y: auto; 
+            box-sizing: border-box; 
+            box-shadow: 0 20px 50px rgba(80, 46, 45, 0.15);
+        }
+        .receipt-container { padding: 10px; background: var(--bg-body); }
+        .r-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95em; align-items: center; }
+        .r-row span:first-child { color: var(--text-light); font-weight: 500; }
+        .r-row span:last-child { font-weight: 700; color: var(--text-dark); }
+        .r-total-box { 
+            background: var(--primary-hover); 
+            color: white; 
+            padding: 16px; 
+            border-radius: 14px; 
+            text-align: center; 
+            font-weight: 800; 
+            margin-top: 24px; 
+            font-size: 1.15em; 
+            display: flex; 
+            justify-content: space-between; 
+            box-shadow: 0 6px 16px rgba(160, 120, 85, 0.2);
+        }
+        
+        .r-contact-info { margin-top: 24px; padding: 16px; background: var(--white); border: 2px dashed var(--primary); border-radius: 14px; font-size: 0.88em; color: var(--text-dark); }
+        .r-contact-info p { margin: 0 0 10px 0; font-weight: 800; color: var(--primary-hover); }
+        .r-contact-info ul { margin: 0; padding-left: 20px; list-style-type: disc; color: var(--text-light); }
+        .r-contact-info li { margin-bottom: 5px; font-weight: 500; }
+        .r-contact-info li span { color: var(--text-dark); font-weight: 700; }
+
+        /* --- PRE-ORDER EXCLUSIVE STYLES --- */
+        .po-card {
+            padding: 30px 24px; 
+            border-radius: 32px; 
+            text-align: center; 
+            background: var(--bg-card); 
+            box-shadow: 0 12px 30px rgba(80, 46, 45, 0.04);
+        }
+        .po-banner-container {
+            width: 100%; 
+            height: auto;
+            min-height: 150px;
+            background: var(--green-screen); 
+            border-radius: 20px; 
+            margin-bottom: 22px; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        .po-banner-container img {
+            width: 100%; 
+            height: auto; 
+            display: block;
+            object-fit: contain;
+        }
+        .po-title {
+            font-family: inherit; 
+            font-weight: 800; 
+            font-size: 1.4em; 
+            color: var(--text-dark); 
+            margin: 0 0 20px 0; 
+            letter-spacing: -0.3px;
+            line-height: 1.3;
+        }
+        .po-btn {
+            display: inline-block; 
+            width: 85%; 
+            background: var(--white); 
+            color: var(--text-dark); 
+            text-decoration: none; 
+            font-weight: 800; 
+            font-size: 1.1em; 
+            padding: 14px 30px; 
+            border-radius: 50px; 
+            border: none; 
+            box-sizing: border-box; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 12px rgba(80, 46, 45, 0.04);
+        }
+        .po-btn:hover {
+            transform: scale(1.03);
+            background: var(--bg-card); 
+            color: var(--text-dark);
+            box-shadow: 0 8px 24px rgba(80, 46, 45, 0.08);
+        }
+
+        .btn-back {
+            margin-bottom: 25px; 
+            display: inline-flex; 
+            align-items: center;
+            gap: 5px;
+            cursor: pointer; 
+            font-weight: 700; 
+            color: var(--text-light);
+            transition: color 0.2s ease;
+        }
+        .btn-back:hover {
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 500px) {
+            .info-grid { grid-template-columns: 1fr; gap: 10px; }
+            .product-grid { grid-template-columns: 1fr; gap: 15px; }
+            .po-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- --- LANDING PAGE --- -->
+    <div id="pageLanding" class="page active">
+        <div class="profile-area">
+            <div class="avatar">
+                <img src="profile.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="avatar-placeholder" style="display:none;">✨</span>
+            </div>
+            <h2 style="color: var(--primary-hover); margin-bottom: 5px; font-weight: 900; letter-spacing: -0.5px;">Souffales ✨</h2>
+            <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0; letter-spacing: 0.3px; font-weight: 600;">Illustrator | Chibi Art & Merch Design</p>
+        </div>
+
+        <a href="https://shopee.co.id/souffales" target="_blank" class="nav-button">🍊 Shopee</a>
+        <a href="https://vt.tiktok.com/ZSQCLJXuq/?page=Mall" target="_blank" class="nav-button">⭐ Tiktok Shop</a>
+        <a href="https://acggoods.com/store/souffales-atelier" target="_blank" class="nav-button">🪐 ACGGOODS (Merch International)</a>
+        <a href="https://drive.google.com/file/d/1r4xhUaj-fcyCT4PRCeticN1gUGbWqjD4/view?usp=drive_link" target="_blank" class="nav-button">🍳 Brand Profile</a>
+        <div onclick="showPage('pagePreOrder')" class="nav-button">📦 Pre-Order Merch</div>
+        <div onclick="showPage('pageCommission')" class="nav-button">🎨 Order Commission</div>
+    </div>
+
+    <!-- --- PRE-ORDER PAGE --- -->
+    <div id="pagePreOrder" class="page">
+        <div onclick="showPage('pageLanding')" class="btn-back">← Back</div>
+        
+        <div class="po-card">
+            <div class="po-banner-container">
+                <img src="katalog_po" alt="Pre-Order Banner" onerror="this.style.display='none';">
+            </div>
+
+            <h2 class="po-title">
+                Mail Order Afterparty Cf22
+            </h2>
+
+            <a href="https://forms.gle/AHXxsESkKpJhWjcr8" target="_blank" class="po-btn">
+                Order disini!
+            </a>
+        </div>
+        <div style="height: 40px;"></div>
+    </div>
+
+    <!-- --- COMMISSION PAGE --- -->
+    <div id="pageCommission" class="page">
+        <div onclick="showPage('pageLanding')" class="btn-back">← Back</div>
+        
+        <div class="header" style="margin-bottom: 25px;">
+            <h2 style="color: var(--primary-hover); margin-bottom: 6px; font-weight: 900; letter-spacing: -0.5px;">Commission Form</h2>
+            <p style="font-size: 0.9em; color: var(--text-light); margin-top: 0; font-weight: 500; line-height: 1.4;">Please fill in your info and select your commission category!</p>
+        </div>
+
+        <div class="card">
+            <div class="info-grid">
+                <div class="form-group">
+                    <label>NAME ORDER</label>
+                    <input type="text" id="userName" placeholder="Your name / username">
+                </div>
+                <div class="form-group">
+                    <label>CONTACT / PHONE NUMBER</label>
+                    <input type="text" id="userContact" placeholder="@twitter / Discord / WA">
+                </div>
+            </div>
+        </div>
+
+        <div class="category-title">Ych</div>
+        <div class="product-grid">
+            
+            <div class="product-item" id="item-kotsouna" data-price-idr="95000" data-price-usd="20" data-name="YCH - Kotsouna">
+                <div class="product-preview-img">
+                    <img src="kotsouna.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Kotsouna Preview</div>
+                </div>
+                <div>
+                    <div class="product-name">Kotsouna</div>
+                    <div class="product-price">95k / $20</div>
+                    <div class="product-desc">With tiny hands, a huggable round body, and the sweetest expression, the Koutsouna style is made to melt hearts. Let’s transform your character into a tiny plushie friend today! 🧸💖</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-kotsouna', -1)">-</button>
+                    <span class="counter-value" id="qty-item-kotsouna">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-kotsouna', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="product-item" id="item-yochien" data-price-idr="70000" data-price-usd="17" data-name="YCH - Yochien">
+                <div class="product-preview-img">
+                    <img src="yochien.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Yochien Preview</div>
+                </div>
+                <div>
+                    <div class="product-name">Yochien</div>
+                    <div class="product-price">70k / $17</div>
+                    <div class="product-desc">The cutest kindergarten ever! Tiny pocket-sized chibi, soft yellow kindergarten hat and cute uniform badge! Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-yochien', -1)">-</button>
+                    <span class="counter-value" id="qty-item-yochien">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-yochien', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="product-item" id="item-cimit" data-price-idr="95000" data-price-usd="20" data-name="YCH - Cimit">
+                <div class="product-preview-img">
+                    <img src="cimit.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Cimit Preview</div>
+                </div>
+                <div>
+                    <div class="product-name">Cimit</div>
+                    <div class="product-price">95k / $20</div>
+                    <div class="product-desc">Squishiest chibi ever ✨ The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-cimit', -1)">-</button>
+                    <span class="counter-value" id="qty-item-cimit">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-cimit', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="product-item" id="item-ebifurai" data-price-idr="65000" data-price-usd="15" data-name="YCH - Ebi Furai">
+                <div class="product-preview-img">
+                    <img src="ebi%20furai.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Ebi Furai Preview</div>
+                </div>
+                <div>
+                    <div class="product-name">Ebi Furai</div>
+                    <div class="product-price">65k / $15</div>
+                    <div class="product-desc">Oh my! Crispiest tempura suit! 🍤 Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-ebifurai', -1)">-</button>
+                    <span class="counter-value" id="qty-item-ebifurai">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-ebifurai', 1)">+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="category-title">Logo Commission</div>
+        <div class="product-grid" style="grid-template-columns: 1fr;">
+            
+            <div class="product-item" id="item-logo" data-price-idr="250000" data-price-usd="30" data-name="Logo Commission">
+                <div class="product-preview-img" style="aspect-ratio: 16 / 9;">
+                    <img src="logo commission.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="no-img-placeholder" style="display:none;">🖼️ Logo Commission Sample Banner</div>
+                </div>
+                <div>
+                    <div class="product-name">Logo Commission</div>
+                    <div class="product-price">Start From 250k / $30</div>
+                    <div class="product-desc">Tailored to your every requirement! 🪐 This bespoke design service transforms concept into iconic and perfect logo 🌟</div>
+                </div>
+                <div class="counter-wrapper" onclick="event.stopPropagation();">
+                    <button class="btn-counter" onclick="changeQty('item-logo', -1)">-</button>
+                    <span class="counter-value" id="qty-item-logo">0</span>
+                    <button class="btn-counter" onclick="changeQty('item-logo', 1)">+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="category-title">Options</div>
+        <div class="card" style="margin-bottom: 15px;">
+            <div class="form-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="chkCommercial" onchange="updateTotal()">
+                    Commercial Use
+                </label>
+                <p class="option-desc">Commercial Use means you can use the artwork for things that generate income, like twitch/youtube emotes, selling physical merch, or promotions! ✨ Select this option to get full business rights!</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="form-group">
+                <label>Turn into merchandise! (for local only)</label>
+                <select id="selectMerch" onchange="updateTotal()">
+                    <option value="none" data-price-idr="0" data-price-usd="0">-- No Merchandise --</option>
+                    <option value="keychain" data-price-idr="25000" data-price-usd="0">Keychain (+25k)</option>
+                    <option value="phonestrap" data-price-idr="15000" data-price-usd="0">Phonestrap (+15k)</option>
+                    <option value="pin" data-price-idr="10000" data-price-usd="0">Pin Badge 4.4cm (+10k)</option>
+                </select>
+                <p class="option-desc">Turn your commission into perfect sized merchandise! Limited and personal only for you ✨ (for local only)</p>
+            </div>
+        </div>
+
+        <div style="height: 100px;"></div>
+    </div>
+
+</div>
+
+<!-- --- FLOATING BAR --- -->
+<div id="commissionBar" class="bottom-bar">
+    <div class="bottom-container">
+        <div>
+            <div style="font-size: 0.75em; color: var(--text-light); font-weight: 800; letter-spacing: 0.5px;">TOTAL ESTIMATION</div>
+            <div id="totalDisplay" style="font-weight: 900; color: var(--primary-hover); font-size: 1.2em; margin-top: 2px;">Rp 0 / $0</div>
+        </div>
+        <button class="btn-checkout" id="btnCheckout" disabled onclick="showReceipt()">Check Receipt</button>
+    </div>
+</div>
+
+<!-- --- RECEIPT MODAL --- -->
+<div id="receiptModal" class="modal">
+    <div class="modal-content">
+        <div id="captureArea" class="receipt-container">
+            <h2 style="text-align: center; color: var(--primary-hover); margin: 0; font-weight: 900; letter-spacing: -0.5px;">Receipt ✨</h2>
+            <p style="text-align: center; font-size: 0.85em; margin: 5px 0 20px; color: var(--text-light); font-weight: 500;">Order Confirmation Receipt</p>
+            <hr style="border: none; border-top: 3px dashed var(--primary); margin-bottom: 20px;">
+            
+            <div class="r-row"><span>Name:</span> <span id="rName"></span></div>
+            <div class="r-row"><span>Contact:</span> <span id="rContact"></span></div>
+            <hr style="border: none; border-top: 1px solid rgba(160, 120, 85, 0.15); margin: 15px 0;">
+            
+            <div style="font-size: 0.8em; font-weight: 800; color: var(--primary-hover); margin-bottom: 12px; letter-spacing: 0.5px;">ORDER LIST:</div>
+            <div id="rItems"></div>
+            
+            <div class="r-total-box">
+                <span>TOTAL:</span>
+                <span id="rTotal">Rp 0 / $0</span>
+            </div>
+
+            <div class="r-contact-info">
+                <p>Contact me on</p>
+                <ul>
+                    <li>Discord: <span>@souffales</span></li>
+                    <li>X: <span>@souffales</span></li>
+                    <li>WhatsApp: <span>+62 851-7996-8670</span></li>
+                </ul>
+            </div>
+
+            <p style="font-size: 0.8em; text-align: center; margin-top: 25px; color: var(--text-light); font-weight: 600; line-height: 1.5;">Please save this image & send it via DM <br>to submit your order! ✨ <br><span style="color: var(--primary-hover); font-weight: 800;">@souffales</span></p>
+        </div>
+        <button class="btn-checkout" onclick="downloadReceipt()" style="width: 100%; margin-top: 20px;">📸 Save as Image</button>
+        <button onclick="closeModal()" style="width: 100%; background: none; border: none; margin-top: 14px; color: var(--text-light); font-weight: 700; cursor: pointer; font-size: 0.95em;">Close</button>
+    </div>
+</div>
+
+<script>
+    let orderData = {
+        'item-kotsouna': { qty: 0, priceIdr: 95000, priceUsd: 20, name: "YCH - Kotsouna" },
+        'item-yochien':  { qty: 0, priceIdr: 70000, priceUsd: 17, name: "YCH - Yochien" },
+        'item-cimit':    { qty: 0, priceIdr: 95000, priceUsd: 20, name: "YCH - Cimit" },
+        'item-ebifurai': { qty: 0, priceIdr: 65000, priceUsd: 15, name: "YCH - Ebi Furai" },
+        'item-logo':     { qty: 0, priceIdr: 250000, priceUsd: 30, name: "Logo Commission" }
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('commissionBar').style.display = 'none';
+    });
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        document.getElementById('commissionBar').style.display = (pageId === 'pageCommission') ? 'flex' : 'none';
+        window.scrollTo(0, 0);
+    }
+
+    function changeQty(itemId, amount) {
+        let item = orderData[itemId];
+        let cardElement = document.getElementById(itemId);
+        
+        item.qty += amount;
+        if (item.qty < 0) item.qty = 0;
+
+        if (item.qty > 0) {
+            cardElement.classList.add('selected');
+        } else {
+            cardElement.classList.remove('selected');
+        }
+
+        document.getElementById(`qty-${itemId}`).innerText = item.qty;
+        updateTotal();
+    }
+
+    function updateTotal() {
+        let totalIDR = 0;
+        let totalUSD = 0;
+        let hasItems = false;
+
+        for (let key in orderData) {
+            let item = orderData[key];
+            if (item.qty > 0) {
+                totalIDR += item.priceIdr * item.qty;
+                totalUSD += item.priceUsd * item.qty;
+                hasItems = true;
+            }
+        }
+
+        const isCommercial = document.getElementById('chkCommercial').checked;
+        if (isCommercial && hasItems) {
+            totalIDR *= 2;
+            totalUSD *= 2;
+        }
+
+        const merchSelect = document.getElementById('selectMerch');
+        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
+        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
+        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
+
+        if (hasItems) {
+            totalIDR += merchPriceIdr;
+            totalUSD += merchPriceUsd;
+        }
+        
+        document.getElementById('totalDisplay').innerText = `Rp ${totalIDR.toLocaleString('id-ID')} / $${totalUSD}`;
+        document.getElementById('btnCheckout').disabled = !hasItems;
+    }
+
+    function showReceipt() {
+        const nama = document.getElementById('userName').value.trim();
+        const kontak = document.getElementById('userContact').value.trim();
+        
+        if (!nama || !kontak) {
+            alert("Please fill in your Name Order and Contact first! ✨");
+            return;
+        }
+
+        document.getElementById('rName').innerText = nama;
+        document.getElementById('rContact').innerText = kontak;
+        
+        const itemBox = document.getElementById('rItems');
+        itemBox.innerHTML = '';
+        
+        let finalIDR = 0;
+        let finalUSD = 0;
+        let hasItems = false;
+
+        for (let key in orderData) {
+            let item = orderData[key];
+            if (item.qty > 0) {
+                let subIdr = item.priceIdr * item.qty;
+                let subUsd = item.priceUsd * item.qty;
+                finalIDR += subIdr;
+                finalUSD += subUsd;
+                hasItems = true;
+
+                itemBox.innerHTML += `
+                    <div class="r-row" style="margin-bottom: 8px;">
+                        <span style="color: var(--text-dark); font-weight: 600;">• ${item.name} <b style="color: var(--primary-hover)">x${item.qty}</b></span>
+                        <span>Rp ${subIdr.toLocaleString('id-ID')} / $${subUsd}</span>
+                    </div>`;
+            }
+        }
+
+        const isCommercial = document.getElementById('chkCommercial').checked;
+        if (isCommercial && hasItems) {
+            let commAddIdr = finalIDR; 
+            let commAddUsd = finalUSD;
+            finalIDR *= 2;
+            finalUSD *= 2;
+
+            itemBox.innerHTML += `
+                <div class="r-row" style="margin-bottom: 8px; font-style: italic;">
+                    <span style="color: var(--text-dark); font-weight: 600;">• Commercial Use Fee (+100%)</span>
+                    <span>Rp ${commAddIdr.toLocaleString('id-ID')} / $${commAddUsd}</span>
+                </div>`;
+        }
+
+        const merchSelect = document.getElementById('selectMerch');
+        const selectedMerch = merchSelect.options[merchSelect.selectedIndex];
+        const merchPriceIdr = parseFloat(selectedMerch.getAttribute('data-price-idr')) || 0;
+        const merchPriceUsd = parseFloat(selectedMerch.getAttribute('data-price-usd')) || 0;
+
+        if (merchSelect.value !== "none" && hasItems) {
+            finalIDR += merchPriceIdr;
+            finalUSD += merchPriceUsd;
+
+            itemBox.innerHTML += `
+                <div class="r-row" style="margin-bottom: 8px; color: var(--primary-hover);">
+                    <span style="font-weight: 600;">• Add-on: ${selectedMerch.text.split(' (')[0]} (Local Only)</span>
+                    <span>Rp ${merchPriceIdr.toLocaleString('id-ID')}</span>
+                </div>`;
+        }
+
+        document.getElementById('rTotal').innerText = `Rp ${finalIDR.toLocaleString('id-ID')} / $${finalUSD}`;
+        document.getElementById('receiptModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('receiptModal').style.display = 'none';
+    }
+
+    function downloadReceipt() {
+        const area = document.getElementById('captureArea');
+        html2canvas(area, { backgroundColor: "#fffcf4", scale: 2 }).then(canvas => {
+            const link = document.createElement('a');
+            const clientName = document.getElementById('userName').value.replace(/[^a-zA-Z0-9]/g, "");
+            link.download = `Order_Souffales_${clientName || 'Client'}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
+
+</body>
+</html>
