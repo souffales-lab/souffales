@@ -23,7 +23,6 @@
             color: var(--text-dark);
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -34,12 +33,7 @@
 
         /* --- NAVIGATION SYSTEM --- */
         .page { display: none; }
-        .page.active { display: block; animation: fadeIn 0.4s ease-out; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .page.active { display: block; }
 
         /* --- LANDING PAGE STYLES --- */
         .profile-area { text-align: center; margin-bottom: 40px; }
@@ -55,7 +49,7 @@
             align-items: center; 
             justify-content: center; 
             overflow: hidden; 
-            box-shadow: 0 8px 20px rgba(80, 46, 45, 0.08);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .avatar img {
             width: 100%;
@@ -69,260 +63,92 @@
         .nav-button {
             display: block;
             width: 100%;
-            background: var(--white);
+            background: var(--bg-card);
             color: var(--text-dark);
             text-decoration: none;
             text-align: center;
             padding: 18px;
-            margin-bottom: 16px;
-            border-radius: 20px;
-            font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-bottom: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: 0.3s;
             border: 2px solid transparent;
             cursor: pointer;
             box-sizing: border-box;
-            box-shadow: 0 4px 12px rgba(80, 46, 45, 0.04);
         }
         .nav-button:hover {
-            background: var(--bg-card);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(80, 46, 45, 0.08);
+            background: var(--primary);
+            transform: translateY(-3px);
+            border-color: var(--white);
         }
 
         /* --- FORM STYLES --- */
-        .card { 
-            background: var(--bg-card); 
-            border-radius: 24px; 
-            padding: 25px; 
-            margin-bottom: 25px;
-            box-shadow: 0 8px 24px rgba(80, 46, 45, 0.03);
-        }
-        .category-title { 
-            font-size: 1.4em; 
-            font-weight: 800; 
-            color: var(--primary-hover); 
-            margin: 35px 0 15px 0; 
-            padding-bottom: 8px; 
-            border-bottom: 2px dashed var(--primary); 
-            letter-spacing: -0.3px;
-        }
+        .card { background: var(--bg-card); border-radius: 20px; padding: 25px; margin-bottom: 25px; }
+        .category-title { font-size: 1.4em; font-weight: bold; color: var(--primary-hover); margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px dashed var(--primary); }
         
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .form-group { margin-bottom: 5px; }
-        .form-group label { display: block; font-size: 0.8em; font-weight: 800; margin-bottom: 8px; color: var(--primary-hover); letter-spacing: 0.5px; }
-        .form-group input { 
-            width: 100%; 
-            padding: 14px; 
-            border-radius: 12px; 
-            border: 2px solid transparent; 
-            outline: none; 
-            box-sizing: border-box; 
-            font-family: inherit; 
-            color: var(--text-dark); 
-            background: var(--white);
-            transition: all 0.3s ease;
-        }
-        .form-group input:focus {
-            border-color: var(--primary-hover);
-        }
+        .form-group label { display: block; font-size: 0.85em; font-weight: bold; margin-bottom: 8px; color: var(--primary-hover); }
+        .form-group input { width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; box-sizing: border-box; font-family: inherit; color: var(--text-dark); }
 
-        .form-group select { 
-            width: 100%; 
-            padding: 14px; 
-            border-radius: 12px; 
-            border: 2px solid transparent; 
-            outline: none; 
-            box-sizing: border-box; 
-            font-family: inherit; 
-            color: var(--text-dark); 
-            background: var(--white); 
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .form-group select:focus {
-            border-color: var(--primary-hover);
-        }
-        .option-desc { font-size: 0.8em; color: var(--text-light); line-height: 1.5; margin: 8px 0 0 0; }
-        
-        .checkbox-container { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            cursor: pointer; 
-            font-weight: 800; 
-            font-size: 0.95em; 
-            user-select: none;
-        }
-        .checkbox-container input { 
-            width: 20px; 
-            height: 20px; 
-            cursor: pointer; 
-            accent-color: var(--primary-hover); 
-        }
+        .form-group select { width: 100%; padding: 12px; border-radius: 10px; border: none; outline: none; box-sizing: border-box; font-family: inherit; color: var(--text-dark); background: var(--white); font-weight: 500; }
+        .option-desc { font-size: 0.78em; color: var(--text-light); line-height: 1.4; margin: 6px 0 0 0; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold; font-size: 0.95em; }
+        .checkbox-container input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-hover); }
 
         /* --- PRODUCT GRID & CONTAINER --- */
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-        .product-item { 
-            background: var(--white); 
-            border-radius: 20px; 
-            padding: 15px; 
-            border: 3px solid transparent; 
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-            box-sizing: border-box; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            position: relative;
-            box-shadow: 0 6px 16px rgba(80, 46, 45, 0.03);
-        }
-        .product-item.selected { border-color: var(--primary-hover); background: #FFFDF9; transform: scale(1.02); }
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; align-items: start; }
+        .product-item { background: var(--white); border-radius: 15px; padding: 12px; border: 3px solid transparent; transition: 0.3s; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .product-item.selected { border-color: var(--primary-hover); background: #F9F1E7; }
         
-        .product-preview-img { 
-            width: 100%; 
-            border-radius: 14px; 
-            background: var(--bg-body); 
-            margin-bottom: 12px; 
-            overflow: hidden; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border: 1px solid rgba(160, 120, 85, 0.08);
-            aspect-ratio: 1 / 1;
-        }
-        .product-preview-img img { width: 100%; height: 100%; display: block; object-fit: cover; }
-        .no-img-placeholder { font-size: 0.8em; color: var(--text-light); text-align: center; padding: 20px; font-style: italic; font-weight: 500; }
+        .product-preview-img { width: 100%; border-radius: 10px; background: #fffcf4; margin-bottom: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(160, 120, 85, 0.1); }
+        .product-preview-img img { width: 100%; height: auto; display: block; object-fit: contain; }
+        .no-img-placeholder { font-size: 0.75em; color: var(--text-light); text-align: center; padding: 20px; font-style: italic; }
 
-        .product-name { font-weight: 800; font-size: 1em; margin-bottom: 4px; letter-spacing: -0.2px; }
-        .product-price { color: var(--primary-hover); font-weight: 800; font-size: 0.9em; margin-bottom: 10px; }
-        .product-desc { font-size: 0.78em; color: var(--text-light); line-height: 1.5; margin-bottom: 20px; white-space: pre-line; }
+        .product-name { font-weight: bold; font-size: 0.95em; margin-bottom: 3px; }
+        .product-price { color: var(--primary-hover); font-weight: bold; font-size: 0.85em; margin-bottom: 8px; }
+        .product-desc { font-size: 0.75em; color: var(--text-light); line-height: 1.4; margin-bottom: 15px; white-space: pre-line; }
 
         /* --- COUNTER SYSTEM (+/-) --- */
-        .counter-wrapper { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            background: var(--bg-body); 
-            border-radius: 10px; 
-            padding: 5px; 
-            border: 1px solid rgba(160, 120, 85, 0.15); 
-            margin-top: auto; 
-        }
-        .btn-counter { 
-            background: var(--primary); 
-            color: var(--text-dark); 
-            border: none; 
-            width: 32px; 
-            height: 32px; 
-            border-radius: 8px; 
-            font-weight: 800; 
-            font-size: 1.2em; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            transition: all 0.2s ease; 
-        }
+        .counter-wrapper { display: flex; align-items: center; justify-content: space-between; background: var(--bg-body); border-radius: 8px; padding: 4px; border: 1px solid rgba(160, 120, 85, 0.2); margin-top: auto; }
+        .btn-counter { background: var(--primary); color: var(--text-dark); border: none; width: 28px; height: 28px; border-radius: 6px; font-weight: bold; font-size: 1.1em; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .btn-counter:hover { background: var(--primary-hover); color: white; }
-        .counter-value { font-weight: 800; font-size: 0.95em; min-width: 24px; text-align: center; }
+        .counter-value { font-weight: bold; font-size: 0.9em; min-width: 20px; text-align: center; }
 
         /* --- FLOATING BAR --- */
-        .bottom-bar { 
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            background: var(--white); 
-            padding: 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 -10px 30px rgba(80, 46, 45, 0.06); 
-            z-index: 50; 
-            box-sizing: border-box; 
-            border-top: 1px solid rgba(160, 120, 85, 0.1);
-        }
+        .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 15px rgba(0,0,0,0.05); z-index: 50; box-sizing: border-box; }
         .bottom-container { max-width: 600px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
-        .btn-checkout { 
-            background: var(--primary-hover); 
-            color: white; 
-            border: none; 
-            padding: 14px 28px; 
-            border-radius: 14px; 
-            font-weight: 800; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 4px 12px rgba(160, 120, 85, 0.25);
-        }
-        .btn-checkout:disabled { background: #d3c3b4; cursor: not-allowed; box-shadow: none; }
-        .btn-checkout:not(:disabled):hover { background: var(--text-dark); transform: translateY(-2px); }
+        .btn-checkout { background: var(--primary-hover); color: white; border: none; padding: 12px 24px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-checkout:disabled { background: #d3c3b4; cursor: not-allowed; }
+        .btn-checkout:not(:disabled):hover { background: var(--text-dark); }
 
         /* --- MODAL STRUK --- */
-        .modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 100; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(80, 46, 45, 0.4); 
-            align-items: center; 
-            justify-content: center; 
-            backdrop-filter: blur(6px); 
-            padding: 20px; 
-            box-sizing: border-box; 
-        }
-        .modal-content { 
-            background: var(--bg-body); 
-            border-radius: 28px; 
-            width: 100%; 
-            max-width: 450px; 
-            padding: 24px; 
-            position: relative; 
-            max-height: 90vh; 
-            overflow-y: auto; 
-            box-sizing: border-box; 
-            box-shadow: 0 20px 50px rgba(80, 46, 45, 0.15);
-        }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; backdrop-filter: blur(3px); padding: 20px; box-sizing: border-box; }
+        .modal-content { background: var(--bg-body); border-radius: 20px; width: 100%; max-width: 450px; padding: 20px; position: relative; max-height: 90vh; overflow-y: auto; box-sizing: border-box; }
         .receipt-container { padding: 10px; background: var(--bg-body); }
-        .r-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95em; align-items: center; }
-        .r-row span:first-child { color: var(--text-light); font-weight: 500; }
-        .r-row span:last-child { font-weight: 700; color: var(--text-dark); }
-        .r-total-box { 
-            background: var(--primary-hover); 
-            color: white; 
-            padding: 16px; 
-            border-radius: 14px; 
-            text-align: center; 
-            font-weight: 800; 
-            margin-top: 24px; 
-            font-size: 1.15em; 
-            display: flex; 
-            justify-content: space-between; 
-            box-shadow: 0 6px 16px rgba(160, 120, 85, 0.2);
-        }
+        .r-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95em; align-items: center; }
+        .r-row span:first-child { color: var(--text-light); }
+        .r-row span:last-child { font-weight: bold; color: var(--text-dark); }
+        .r-total-box { background: var(--primary-hover); color: white; padding: 15px; border-radius: 12px; text-align: center; font-weight: bold; margin-top: 20px; font-size: 1.1em; display: flex; justify-content: space-between; }
         
-        .r-contact-info { margin-top: 24px; padding: 16px; background: var(--white); border: 2px dashed var(--primary); border-radius: 14px; font-size: 0.88em; color: var(--text-dark); }
-        .r-contact-info p { margin: 0 0 10px 0; font-weight: 800; color: var(--primary-hover); }
-        .r-contact-info ul { margin: 0; padding-left: 20px; list-style-type: disc; color: var(--text-light); }
-        .r-contact-info li { margin-bottom: 5px; font-weight: 500; }
-        .r-contact-info li span { color: var(--text-dark); font-weight: 700; }
+        .r-contact-info { margin-top: 20px; padding: 12px; background: #FFFDF9; border: 1px dashed var(--primary); border-radius: 10px; font-size: 0.85em; color: var(--text-dark); }
+        .r-contact-info p { margin: 0 0 6px 0; font-weight: bold; color: var(--primary-hover); }
+        .r-contact-info ul { margin: 0; padding-left: 15px; list-style-type: disc; color: var(--text-light); }
+        .r-contact-info li { margin-bottom: 3px; font-weight: 500; }
+        .r-contact-info li span { color: var(--text-dark); font-weight: 600; }
 
         /* --- PRE-ORDER EXCLUSIVE STYLES --- */
         .po-card {
             padding: 30px 24px; 
-            border-radius: 32px; 
+            border-radius: 20px; 
             text-align: center; 
             background: var(--bg-card); 
-            box-shadow: 0 12px 30px rgba(80, 46, 45, 0.04);
         }
         .po-banner-container {
             width: 100%; 
             height: auto;
             min-height: 150px;
             background: var(--green-screen); 
-            border-radius: 20px; 
+            border-radius: 15px; 
             margin-bottom: 22px; 
             overflow: hidden; 
             display: flex; 
@@ -336,12 +162,10 @@
             object-fit: contain;
         }
         .po-title {
-            font-family: inherit; 
-            font-weight: 800; 
+            font-weight: bold; 
             font-size: 1.4em; 
             color: var(--text-dark); 
             margin: 0 0 20px 0; 
-            letter-spacing: -0.3px;
             line-height: 1.3;
         }
         .po-btn {
@@ -350,39 +174,32 @@
             background: var(--white); 
             color: var(--text-dark); 
             text-decoration: none; 
-            font-weight: 800; 
+            font-weight: bold; 
             font-size: 1.1em; 
             padding: 14px 30px; 
             border-radius: 50px; 
             border: none; 
             box-sizing: border-box; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 4px 12px rgba(80, 46, 45, 0.04);
+            transition: 0.3s; 
         }
         .po-btn:hover {
             transform: scale(1.03);
-            background: var(--bg-card); 
-            color: var(--text-dark);
-            box-shadow: 0 8px 24px rgba(80, 46, 45, 0.08);
+            background: var(--primary); 
         }
-
-        .btn-back {
-            margin-bottom: 25px; 
-            display: inline-flex; 
-            align-items: center;
-            gap: 5px;
+        .back-link { 
+            display: inline-block; 
+            margin-top: 10px; 
+            color: var(--primary-hover); 
+            font-weight: bold; 
             cursor: pointer; 
-            font-weight: 700; 
-            color: var(--text-light);
-            transition: color 0.2s ease;
+            text-decoration: none; 
+            margin-bottom: 25px;
         }
-        .btn-back:hover {
-            color: var(--text-dark);
-        }
+        .back-link:hover { text-decoration: underline; }
 
         @media (max-width: 500px) {
-            .info-grid { grid-template-columns: 1fr; gap: 10px; }
-            .product-grid { grid-template-columns: 1fr; gap: 15px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
             .po-btn { width: 100%; }
         }
     </style>
@@ -398,13 +215,12 @@
                 <img src="profile.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="avatar-placeholder" style="display:none;">✨</span>
             </div>
-            <h2 style="color: var(--primary-hover); margin-bottom: 5px; font-weight: 900; letter-spacing: -0.5px;">Souffales ✨</h2>
-            <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0; letter-spacing: 0.3px; font-weight: 600;">Illustrator | Chibi Art & Merch Design</p>
+            <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Souffales ✨</h2>
+            <p style="color: var(--text-light); font-size: 0.9em; margin-top: 0; letter-spacing: 0.3px;">Illustrator | Chibi Art & Merch Design</p>
         </div>
 
         <a href="https://shopee.co.id/souffales" target="_blank" class="nav-button">🍊 Shopee</a>
         <a href="https://vt.tiktok.com/ZSQCLJXuq/?page=Mall" target="_blank" class="nav-button">⭐ Tiktok Shop</a>
-        <a href="https://acggoods.com/store/souffales-atelier" target="_blank" class="nav-button">🪐 ACGGOODS (Merch International)</a>
         <a href="https://drive.google.com/file/d/1r4xhUaj-fcyCT4PRCeticN1gUGbWqjD4/view?usp=drive_link" target="_blank" class="nav-button">🍳 Brand Profile</a>
         <div onclick="showPage('pagePreOrder')" class="nav-button">📦 Pre-Order Merch</div>
         <div onclick="showPage('pageCommission')" class="nav-button">🎨 Order Commission</div>
@@ -412,7 +228,7 @@
 
     <!-- --- PRE-ORDER PAGE --- -->
     <div id="pagePreOrder" class="page">
-        <div onclick="showPage('pageLanding')" class="btn-back">← Back</div>
+        <span class="back-link" onclick="showPage('pageLanding')">← Back to Main Page</span>
         
         <div class="po-card">
             <div class="po-banner-container">
@@ -432,11 +248,11 @@
 
     <!-- --- COMMISSION PAGE --- -->
     <div id="pageCommission" class="page">
-        <div onclick="showPage('pageLanding')" class="btn-back">← Back</div>
+        <span class="back-link" onclick="showPage('pageLanding')" style="margin-bottom: 25px;">← Back</span>
         
         <div class="header" style="margin-bottom: 25px;">
-            <h2 style="color: var(--primary-hover); margin-bottom: 6px; font-weight: 900; letter-spacing: -0.5px;">Commission Form</h2>
-            <p style="font-size: 0.9em; color: var(--text-light); margin-top: 0; font-weight: 500; line-height: 1.4;">Please fill in your info and select your commission category!</p>
+            <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Commission Form</h2>
+            <p style="font-size: 0.9em; color: var(--text-light); margin-top: 0;">Please fill in your info and select your commission category!</p>
         </div>
 
         <div class="card">
@@ -529,7 +345,7 @@
         <div class="product-grid" style="grid-template-columns: 1fr;">
             
             <div class="product-item" id="item-logo" data-price-idr="250000" data-price-usd="30" data-name="Logo Commission">
-                <div class="product-preview-img" style="aspect-ratio: 16 / 9;">
+                <div class="product-preview-img">
                     <img src="logo commission.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="no-img-placeholder" style="display:none;">🖼️ Logo Commission Sample Banner</div>
                 </div>
@@ -576,30 +392,28 @@
 
 </div>
 
-<!-- --- FLOATING BAR --- -->
-<div id="commissionBar" class="bottom-bar">
+<div id="commissionBar" class="bottom-bar" style="display: none;">
     <div class="bottom-container">
         <div>
-            <div style="font-size: 0.75em; color: var(--text-light); font-weight: 800; letter-spacing: 0.5px;">TOTAL ESTIMATION</div>
-            <div id="totalDisplay" style="font-weight: 900; color: var(--primary-hover); font-size: 1.2em; margin-top: 2px;">Rp 0 / $0</div>
+            <div style="font-size: 0.75em; color: var(--text-light); font-weight: bold;">TOTAL ESTIMATION</div>
+            <div id="totalDisplay" style="font-weight: bold; color: var(--primary-hover); font-size: 1.1em;">Rp 0 / $0</div>
         </div>
         <button class="btn-checkout" id="btnCheckout" disabled onclick="showReceipt()">Check Receipt</button>
     </div>
 </div>
 
-<!-- --- RECEIPT MODAL --- -->
 <div id="receiptModal" class="modal">
     <div class="modal-content">
         <div id="captureArea" class="receipt-container">
-            <h2 style="text-align: center; color: var(--primary-hover); margin: 0; font-weight: 900; letter-spacing: -0.5px;">Receipt ✨</h2>
-            <p style="text-align: center; font-size: 0.85em; margin: 5px 0 20px; color: var(--text-light); font-weight: 500;">Order Confirmation Receipt</p>
-            <hr style="border: none; border-top: 3px dashed var(--primary); margin-bottom: 20px;">
+            <h2 style="text-align: center; color: var(--primary-hover); margin: 0;">Receipt ✨</h2>
+            <p style="text-align: center; font-size: 0.8em; margin: 5px 0 20px; color: var(--text-light);">Order Confirmation Receipt</p>
+            <hr style="border: none; border-top: 3px dashed var(--primary); margin-bottom: 15px;">
             
             <div class="r-row"><span>Name:</span> <span id="rName"></span></div>
             <div class="r-row"><span>Contact:</span> <span id="rContact"></span></div>
-            <hr style="border: none; border-top: 1px solid rgba(160, 120, 85, 0.15); margin: 15px 0;">
+            <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
             
-            <div style="font-size: 0.8em; font-weight: 800; color: var(--primary-hover); margin-bottom: 12px; letter-spacing: 0.5px;">ORDER LIST:</div>
+            <div style="font-size: 0.85em; font-weight: bold; color: var(--primary-hover); margin-bottom: 10px;">ORDER LIST:</div>
             <div id="rItems"></div>
             
             <div class="r-total-box">
@@ -616,10 +430,10 @@
                 </ul>
             </div>
 
-            <p style="font-size: 0.8em; text-align: center; margin-top: 25px; color: var(--text-light); font-weight: 600; line-height: 1.5;">Please save this image & send it via DM <br>to submit your order! ✨ <br><span style="color: var(--primary-hover); font-weight: 800;">@souffales</span></p>
+            <p style="font-size: 0.75em; text-align: center; margin-top: 20px; color: var(--text-light); font-weight: 600;">Please save this image & send it via DM to submit your order! ✨ <br><br>@souffales </p>
         </div>
-        <button class="btn-checkout" onclick="downloadReceipt()" style="width: 100%; margin-top: 20px;">📸 Save as Image</button>
-        <button onclick="closeModal()" style="width: 100%; background: none; border: none; margin-top: 14px; color: var(--text-light); font-weight: 700; cursor: pointer; font-size: 0.95em;">Close</button>
+        <button class="btn-checkout" onclick="downloadReceipt()" style="width: 100%; margin-top: 15px;">📸 Save as Image</button>
+        <button onclick="closeModal()" style="width: 100%; background: none; border: none; margin-top: 12px; color: var(--text-light); font-weight: bold; cursor: pointer;">Close</button>
     </div>
 </div>
 
@@ -631,10 +445,6 @@
         'item-ebifurai': { qty: 0, priceIdr: 65000, priceUsd: 15, name: "YCH - Ebi Furai" },
         'item-logo':     { qty: 0, priceIdr: 250000, priceUsd: 30, name: "Logo Commission" }
     };
-
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('commissionBar').style.display = 'none';
-    });
 
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -724,7 +534,7 @@
 
                 itemBox.innerHTML += `
                     <div class="r-row" style="margin-bottom: 8px;">
-                        <span style="color: var(--text-dark); font-weight: 600;">• ${item.name} <b style="color: var(--primary-hover)">x${item.qty}</b></span>
+                        <span style="color: var(--text-dark); font-weight: 500;">• ${item.name} <b style="color: var(--primary-hover)">x${item.qty}</b></span>
                         <span>Rp ${subIdr.toLocaleString('id-ID')} / $${subUsd}</span>
                     </div>`;
             }
@@ -739,7 +549,7 @@
 
             itemBox.innerHTML += `
                 <div class="r-row" style="margin-bottom: 8px; font-style: italic;">
-                    <span style="color: var(--text-dark); font-weight: 600;">• Commercial Use Fee (+100%)</span>
+                    <span style="color: var(--text-dark); font-weight: 500;">• Commercial Use Fee (+100%)</span>
                     <span>Rp ${commAddIdr.toLocaleString('id-ID')} / $${commAddUsd}</span>
                 </div>`;
         }
@@ -755,7 +565,7 @@
 
             itemBox.innerHTML += `
                 <div class="r-row" style="margin-bottom: 8px; color: var(--primary-hover);">
-                    <span style="font-weight: 600;">• Add-on: ${selectedMerch.text.split(' (')[0]} (Local Only)</span>
+                    <span style="font-weight: 500;">• Add-on: ${selectedMerch.text.split(' (')[0]} (Local Only)</span>
                     <span>Rp ${merchPriceIdr.toLocaleString('id-ID')}</span>
                 </div>`;
         }
