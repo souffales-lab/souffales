@@ -114,11 +114,6 @@
         .btn-counter:hover { background: var(--primary-hover); color: white; }
         .counter-value { font-weight: bold; font-size: 0.9em; min-width: 20px; text-align: center; }
 
-        /* --- COMING SOON AREA --- */
-        .coming-soon { text-align: center; padding: 60px 20px; }
-        .back-link { display: inline-block; margin-top: 10px; color: var(--primary-hover); font-weight: bold; cursor: pointer; text-decoration: none; }
-        .back-link:hover { text-decoration: underline; }
-
         /* --- FLOATING BAR --- */
         .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-card); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 15px rgba(0,0,0,0.05); z-index: 50; box-sizing: border-box; }
         .bottom-container { max-width: 600px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
@@ -135,7 +130,6 @@
         .r-row span:last-child { font-weight: bold; color: var(--text-dark); }
         .r-total-box { background: var(--primary-hover); color: white; padding: 15px; border-radius: 12px; text-align: center; font-weight: bold; margin-top: 20px; font-size: 1.1em; display: flex; justify-content: space-between; }
         
-        /* Style Informasi Kontak di Struk */
         .r-contact-info { margin-top: 20px; padding: 12px; background: #FFFDF9; border: 1px dashed var(--primary); border-radius: 10px; font-size: 0.85em; color: var(--text-dark); }
         .r-contact-info p { margin: 0 0 6px 0; font-weight: bold; color: var(--primary-hover); }
         .r-contact-info ul { margin: 0; padding-left: 15px; list-style-type: disc; color: var(--text-light); }
@@ -152,6 +146,7 @@
 
 <div class="container">
 
+    <!-- --- LANDING PAGE --- -->
     <div id="pageLanding" class="page active">
         <div class="profile-area">
             <div class="avatar">
@@ -164,24 +159,43 @@
 
         <a href="https://shopee.co.id/souffales" target="_blank" class="nav-button">🍊 Shopee</a>
         <a href="https://vt.tiktok.com/ZSQCLJXuq/?page=Mall" target="_blank" class="nav-button">⭐ Tiktok Shop</a>
-         <a href="https://acggoods.com/store/souffales-atelier" target="_blank" class="nav-button">🪐 ACGGOODS (Merch International)</a>
+        <a href="https://acggoods.com/store/souffales-atelier" target="_blank" class="nav-button">🪐 ACGGOODS (Merch International)</a>
         <a href="https://drive.google.com/file/d/1r4xhUaj-fcyCT4PRCeticN1gUGbWqjD4/view?usp=drive_link" target="_blank" class="nav-button">🍳 Brand Profile</a>
-        <!-- TOMBOL PRE-ORDER SEKARANG MEMBUKA LINK GOOGLE FORMS -->
-        <a href="https://forms.gle/AHXxsESkKpJhWjcr8" target="_blank" class="nav-button">📦 Pre-Order Merch</a>
+        <div onclick="showPage('pagePreOrder')" class="nav-button">📦 Pre-Order Merch</div>
         <div onclick="showPage('pageCommission')" class="nav-button">🎨 Order Commission</div>
     </div>
 
+    <!-- --- PRE-ORDER PAGE --- -->
     <div id="pagePreOrder" class="page">
-        <div class="coming-soon">
-            <h1 style="font-size: 3em; margin: 0;">⭐</h1>
-            <h2 style="color: var(--primary-hover); margin-top: 10px;">Pre-Order Coming Soon</h2>
-            <p style="color: var(--text-light);">There are no active Pre-Order products at the moment. Stay tuned!</p>
-            <span class="back-link" onclick="showPage('pageLanding')">← Back to Main Page</span>
+        <span onclick="showPage('pageLanding')" style="margin-bottom: 25px; display: inline-block; cursor: pointer; font-weight: bold; color: var(--text-light);">← Back</span>
+        
+        <!-- CARD UTAMA PRE-ORDER (Sesuai Referensi Gambar) -->
+        <div class="card" style="padding: 20px; border-radius: 35px; text-align: center; background: var(--bg-card); box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+            
+            <!-- Area Gambar (Kotak Hijau) -->
+            <div style="width: 100%; aspect-ratio: 16 / 9; background: #39ff14; border-radius: 25px; margin-bottom: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <!-- Ganti 'katalog_po.png' dengan nama file gambarmu -->
+                <img src="katalog_po.png" alt="Pre-Order Banner" onerror="this.style.display='none';" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <!-- Judul Event/Merch -->
+            <h2 style="font-family: inherit; font-weight: 800; font-size: 1.6em; color: var(--text-dark); margin: 0 0 20px 0; letter-spacing: -0.5px;">
+                Mail Order Afterparty Cf22
+            </h2>
+
+            <!-- Tombol Lonjong Putih "Order disini!" -->
+            <a href="https://forms.gle/AHXxsESkKpJhWjcr8" target="_blank" style="display: inline-block; width: 70%; background: var(--white); color: var(--text-dark); text-decoration: none; font-weight: 800; font-size: 1.3em; padding: 12px 30px; border-radius: 50px; border: none; box-sizing: border-box; transition: 0.2s; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                Order disini!
+            </a>
+
         </div>
+
+        <div style="height: 40px;"></div>
     </div>
 
+    <!-- --- COMMISSION PAGE --- -->
     <div id="pageCommission" class="page">
-        <span class="back-link" onclick="showPage('pageLanding')" style="margin-bottom: 25px;">← Back</span>
+        <span onclick="showPage('pageLanding')" style="margin-bottom: 25px; display: inline-block; cursor: pointer; font-weight: bold; color: var(--text-light);">← Back</span>
         
         <div class="header" style="margin-bottom: 25px;">
             <h2 style="color: var(--primary-hover); margin-bottom: 5px;">Commission Form</h2>
@@ -212,9 +226,7 @@
                 <div>
                     <div class="product-name">Kotsouna</div>
                     <div class="product-price">95k / $20</div>
-                    <div class="product-desc">With tiny hands, a huggable round body, and the sweetest expression, the Koutsouna style is made to melt hearts.
-
-Let’s transform your character into a tiny plushie friend today! 🧸💖</div>
+                    <div class="product-desc">With tiny hands, a huggable round body, and the sweetest expression, the Koutsouna style is made to melt hearts. Let’s transform your character into a tiny plushie friend today! 🧸💖</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-kotsouna', -1)">-</button>
@@ -231,9 +243,7 @@ Let’s transform your character into a tiny plushie friend today! 🧸💖</div
                 <div>
                     <div class="product-name">Yochien</div>
                     <div class="product-price">70k / $17</div>
-                    <div class="product-desc">The cutest kindergarten ever! Tiny pocket-sized chibi, soft yellow kindergarten hat and cute uniform badge! 
-
-Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div>
+                    <div class="product-desc">The cutest kindergarten ever! Tiny pocket-sized chibi, soft yellow kindergarten hat and cute uniform badge! Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-yochien', -1)">-</button>
@@ -250,9 +260,7 @@ Let's get them ready for their first day of cuteness overload! 🍼🎒💖</div
                 <div>
                     <div class="product-name">Cimit</div>
                     <div class="product-price">95k / $20</div>
-                    <div class="product-desc">Squishiest chibi ever ✨
-
-The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
+                    <div class="product-desc">Squishiest chibi ever ✨ The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-cimit', -1)">-</button>
@@ -269,9 +277,7 @@ The ultimate level of pocket-sized chibi that brings joy for you! 🌟</div>
                 <div>
                     <div class="product-name">Ebi Furai</div>
                     <div class="product-price">65k / $15</div>
-                    <div class="product-desc">Oh my! Crispiest tempura suit! 🍤
-
-Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div>
+                    <div class="product-desc">Oh my! Crispiest tempura suit! 🍤 Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-ebifurai', -1)">-</button>
@@ -293,9 +299,7 @@ Super yummy crunchy tiny tempura! The ultimate choice for quirky chibi! ✨</div
                 <div>
                     <div class="product-name">Logo Commission</div>
                     <div class="product-price">Start From 250k / $30</div>
-                    <div class="product-desc">Tailored to your every requirement! 🪐
-                        
-This bespoke design service transforms concept into iconic and perfect logo 🌟</div>
+                    <div class="product-desc">Tailored to your every requirement! 🪐 This bespoke design service transforms concept into iconic and perfect logo 🌟</div>
                 </div>
                 <div class="counter-wrapper" onclick="event.stopPropagation();">
                     <button class="btn-counter" onclick="changeQty('item-logo', -1)">-</button>
@@ -313,9 +317,7 @@ This bespoke design service transforms concept into iconic and perfect logo 🌟
                     <input type="checkbox" id="chkCommercial" onchange="updateTotal()">
                     Commercial Use
                 </label>
-                <p class="option-desc">
-                    Commercial Use means you can use the artwork for things that generate income, like twitch/youtube emotes, selling physical merch, or promotions! ✨ Select this option to get full business rights!
-                </p>
+                <p class="option-desc">Commercial Use means you can use the artwork for things that generate income, like twitch/youtube emotes, selling physical merch, or promotions! ✨ Select this option to get full business rights!</p>
             </div>
         </div>
 
@@ -328,9 +330,7 @@ This bespoke design service transforms concept into iconic and perfect logo 🌟
                     <option value="phonestrap" data-price-idr="15000" data-price-usd="0">Phonestrap (+15k)</option>
                     <option value="pin" data-price-idr="10000" data-price-usd="0">Pin Badge 4.4cm (+10k)</option>
                 </select>
-                <p class="option-desc">
-                    Turn your commission into perfect sized merchandise! Limited and personal only for you ✨ (for local only)
-                </p>
+                <p class="option-desc">Turn your commission into perfect sized merchandise! Limited and personal only for you ✨ (for local only)</p>
             </div>
         </div>
 
@@ -339,6 +339,7 @@ This bespoke design service transforms concept into iconic and perfect logo 🌟
 
 </div>
 
+<!-- --- FLOATING BAR --- -->
 <div id="commissionBar" class="bottom-bar" style="display: none;">
     <div class="bottom-container">
         <div>
@@ -349,6 +350,7 @@ This bespoke design service transforms concept into iconic and perfect logo 🌟
     </div>
 </div>
 
+<!-- --- RECEIPT MODAL --- -->
 <div id="receiptModal" class="modal">
     <div class="modal-content">
         <div id="captureArea" class="receipt-container">
@@ -377,9 +379,7 @@ This bespoke design service transforms concept into iconic and perfect logo 🌟
                 </ul>
             </div>
 
-            <p style="font-size: 0.75em; text-align: center; margin-top: 20px; color: var(--text-light); font-weight: 600;">Please save this image & send it via DM to submit your order! ✨
-                
-            @souffales </p>
+            <p style="font-size: 0.75em; text-align: center; margin-top: 20px; color: var(--text-light); font-weight: 600;">Please save this image & send it via DM to submit your order! ✨ <br> @souffales </p>
         </div>
         <button class="btn-checkout" onclick="downloadReceipt()" style="width: 100%; margin-top: 15px;">📸 Save as Image</button>
         <button onclick="closeModal()" style="width: 100%; background: none; border: none; margin-top: 12px; color: var(--text-light); font-weight: bold; cursor: pointer;">Close</button>
