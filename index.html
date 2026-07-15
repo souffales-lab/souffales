@@ -347,8 +347,8 @@
         .po-btn {
             display: inline-block; 
             width: 85%; 
-            background: var(--text-dark); 
-            color: var(--white); 
+            background: var(--white); /* Tombol dasar putih bersih */
+            color: var(--text-dark); /* Teks cokelat gelap */
             text-decoration: none; 
             font-weight: 800; 
             font-size: 1.1em; 
@@ -357,13 +357,13 @@
             border: none; 
             box-sizing: border-box; 
             transition: all 0.3s ease; 
-            box-shadow: 0 6px 16px rgba(80, 46, 45, 0.06);
+            box-shadow: 0 4px 12px rgba(80, 46, 45, 0.04);
         }
         .po-btn:hover {
             transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(80, 46, 45, 0.1);
-            background: var(--bg-card);
+            background: var(--bg-card); /* Efek hover ke kuning pastel */
             color: var(--text-dark);
+            box-shadow: 0 8px 24px rgba(80, 46, 45, 0.08);
         }
 
         .btn-back {
